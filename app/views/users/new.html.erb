@@ -1,2 +1,71 @@
-<h1>Users#new</h1>
-<p>Find me in app/views/users/new.html.erb</p>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- <link rel="shortcut icon" href="../../docs-assets/ico/favicon.png"> -->
+
+    <title>Registration</title>
+
+    <!-- Bootstrap core CSS -->
+    <!-- <link href="../dist/css/bootstrap.css" rel="stylesheet"> -->
+
+    <!-- Custom styles for this template -->
+    <!-- <link href="signin.css" rel="stylesheet"> -->
+
+    <!-- Just for debugging purposes. Don't actually copy this line! -->
+    <!--[if lt IE 9]><script src="{{ page.base_url }}docs-assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body class="signbody">
+
+    <div class="container">
+      
+      <!--
+      <form class="form-signin">
+        <h2 class="form-signin-heading">Register</h2>
+        <input type="text" class="form-control" placeholder="Username" required autofocus>
+        <input type="text" class="form-control" placeholder="Email address" required autofocus>
+        <input type="password" class="form-control" placeholder="Password" required>
+        <label class="checkbox">
+          <input type="checkbox" value="remember-me"> Show the Password
+        </label>
+        <button class="btn btn-lg btn-primary btn-block" type="submit" id="register">Sign up</button>
+      </form>-->
+
+    
+<!--<div class="row">-->
+  <!--<div class="span6 offset3">-->
+  <div class="form-signin">
+  
+    <%= form_for(@user) do |f| %>
+      
+      <%= render 'shared/error_messages' %>
+      <%= f.text_field :name ,placeholder: "Username"%><br>
+
+      <%= f.text_field :email,placeholder: "Email" %><br>
+
+      
+      <%= f.password_field :password,placeholder:" Password" %><br>
+      
+       <label class="checkbox">
+          <input type="checkbox" value="remember-me"> Show the Password
+        </label><br>
+      <%= f.submit "Create my account", class: "btn btn-large btn-primary btn-block" %>
+    <% end %>
+  </div>
+</div>
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+  </body>
+</html>

@@ -1,4 +1,8 @@
 Feedme::Application.routes.draw do
+  get "users/new"
+  get "users/create"
+  get "users/update"
+  get "users/delete"
   get "static_pages/about"
   get "static_pages/contact"
   get "static_pages/home"

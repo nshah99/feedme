@@ -13,8 +13,9 @@
   <meta name="author" content=""ad>
 </head>
 <body>
+
     <header class="navbar navbar-fixed-top navbar-inverse">
-      <div class="navbar-inner">
+    <div class="navbar-inner">
         <div class="container">
                 <%= link_to "FeedMe", '#', id: "logo" %>
           <nav>
@@ -22,7 +23,7 @@
         </div>
       </div>
     </header>
-
+	
     <div class="container">
       <%= yield %>
        <%= render 'layouts/footer' %>

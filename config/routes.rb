@@ -4,7 +4,11 @@ Feedme::Application.routes.draw do
   #get "users/update"
   #get "users/delete"
   resources :users
+  resources :sessions, only: [:new, :create, :destroy]
   match '/signup',  to: 'users#new',  via: 'get'
+  match '/signin',  to: 'sessions#new',         via: 'get'
+  match '/signout', to: 'sessions#destroy',     via: 'delete'
+
   get "static_pages/about"
   get "static_pages/contact"
   get "static_pages/home"

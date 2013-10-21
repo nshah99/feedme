@@ -6,4 +6,12 @@ class Listing < ActiveRecord::Base
   default_scope -> { order('created_at DESC') }
   validates :item, presence: true
   validates :user_id, presence:true
-end
+  
+ def self.search(search)
+    if search
+      find(:all, :conditions => ['item LIKE ?', "%#{search}%"])
+    else
+      find(:all)
+    end
+  end
+end 

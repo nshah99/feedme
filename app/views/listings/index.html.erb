@@ -1,0 +1,13 @@
+ <p>
+  Index page
+  </p>
+ <%= form_tag listings_path, :method => 'get' do %>
+   <p>
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag "Search", :name => nil %>
+   </p>
+  <% end %>
+  <% @listing.each do |f|%>
+  Email ID: <%= f.email %> <br>
+  Listing: <%= f.item %> <br><br>
+  <% end %>

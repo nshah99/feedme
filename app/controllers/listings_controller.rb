@@ -1,9 +1,18 @@
 class ListingsController < ApplicationController
+  
+  def search
+    @grants = Grant.search params[:search]
+  end
+
   def new
     @listing = Listing.new
   end
 
   def update
+  end
+
+  def index
+    @listing = Listing.search(params[:search])
   end
 
   def show

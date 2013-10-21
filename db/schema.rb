@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131021045354) do
+ActiveRecord::Schema.define(version: 20131021210439) do
 
   create_table "listings", force: true do |t|
     t.string   "email"
@@ -31,7 +31,6 @@ ActiveRecord::Schema.define(version: 20131021045354) do
     t.integer  "user_id"
   end
 
-  add_index "listings", ["email"], name: "index_listings_on_email", unique: true
   add_index "listings", ["user_id", "created_at"], name: "index_listings_on_user_id_and_created_at"
 
   create_table "users", force: true do |t|

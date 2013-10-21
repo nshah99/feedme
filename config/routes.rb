@@ -1,4 +1,5 @@
 Feedme::Application.routes.draw do
+  resources :listings
   #get "users/new"
   #get "users/create"
   #get "users/update"

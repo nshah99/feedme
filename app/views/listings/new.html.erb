@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="form-signin">
+
+
+      <%= form_for(@listing) do |f| %>
+
+        
+        <%= f.text_field :name ,placeholder: "Name" %><br>
+        <%= f.text_field :email,placeholder: "Email" %><br>
+        <%= f.text_field :item, placeholder: "Listing" %><br>
+        <%= f.text_field :price, placeholder: "Price" %><br>
+        <%= f.text_field :quantity, placeholder: "Quantity"%> <br>
+
+        
+        <%= f.submit "Publish my listing", class: "btn btn-large btn-primary btn-block" %>
+      <% end %>
+</div>
+</div>

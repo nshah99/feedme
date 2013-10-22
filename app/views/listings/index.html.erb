@@ -1,13 +1,13 @@
  <p>
   Index page
   </p>
- <!--
+ 
  <%= form_tag listings_path, :method => 'get' do %>
    <p>
     <%= text_field_tag :search, params[:search] %>
     <%= submit_tag "Search", :name => nil %>
    </p>
-  <% end %>-->
+  <% end %>
   <% @listing.each do |f|%>
   <%= link_to f.name, users_path(f.user_id) %> <br>
   Location: <%= f.address%><br>

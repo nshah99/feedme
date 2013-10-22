@@ -11,14 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131022013025) do
+ActiveRecord::Schema.define(version: 20131022040255) do
 
   create_table "listings", force: true do |t|
     t.string   "email"
     t.string   "name"
     t.string   "item"
     t.float    "price"
-    t.text     "address_line"
     t.string   "city"
     t.string   "state"
     t.string   "zip"
@@ -29,6 +28,9 @@ ActiveRecord::Schema.define(version: 20131022013025) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
+    t.float    "latitude"
+    t.float    "longitude"
+    t.string   "address"
   end
 
   add_index "listings", ["user_id", "created_at"], name: "index_listings_on_user_id_and_created_at"

@@ -9,7 +9,7 @@
    </p>
   <% end %>
   <% @listing.each do |f|%>
-  <%= link_to f.name, users_path(f.user_id) %> <br>
+  <%= link_to f.name, users_path+"/"+f.user_id.to_s %> <br>
   Location: <%= f.address%><br>
-  <%= link_to f.item, listings_path(f.id)%><br><br>
+  <%= link_to f.item, listings_path+"/"+f.id.to_s%><br><br>
   <% end %>

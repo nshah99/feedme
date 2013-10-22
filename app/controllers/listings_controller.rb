@@ -1,3 +1,4 @@
+include SessionsHelper
 class ListingsController < ApplicationController
   
   def search
@@ -17,6 +18,7 @@ class ListingsController < ApplicationController
 
   def show
     @listing = Listing.find(params[:id])
+    @a = current_user
   end
   def delete
   end

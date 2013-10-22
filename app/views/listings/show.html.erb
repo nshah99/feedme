@@ -1,4 +1,8 @@
 <%= @listing.email %> , <%= @listing.item %>
+<% params%>
+<% if params[:order_id] %>
+  Add Review..
+  <% else %>
+  <%= link_to "Place order", {:controller=>'orders' ,:action => "new",:listing_id => @listing.id}, class:"btn" %>
 
-<%= link_to "Place order", {:controller=>'orders' ,:action => "new",:listing_id => @listing.id}, class:"btn" %>
-<%= @a.email%>
+<% end %>

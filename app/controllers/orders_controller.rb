@@ -22,6 +22,7 @@ class OrdersController < ApplicationController
   end
 
   def index
+    @order = Order.all
   end
 
   def order_params

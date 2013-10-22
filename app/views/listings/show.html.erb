@@ -1,2 +1,4 @@
 <%= @listing.email %> , <%= @listing.item %>
+
+<%= link_to "Place order", {:controller=>'orders' ,:action => "new",:listing_id => @listing.id}, class:"btn" %>
 <%= @a.email%>

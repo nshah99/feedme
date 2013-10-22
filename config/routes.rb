@@ -1,6 +1,11 @@
 Feedme::Application.routes.draw do
+  #get "orders/new"
+  #get "orders/create"
+  #get "orders/show"
+  #get "orders/index"
   resources :locations
   resources :listings
+  resources :orders
   #get "users/new"
   #get "users/create"
   #get "users/update"

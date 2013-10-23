@@ -19,6 +19,8 @@ class ListingsController < ApplicationController
   def show
     @listing = Listing.find(params[:id])
     @a = current_user
+    @review = Review.new
+    
   end
   def delete
   end

@@ -1,2 +1,12 @@
-<%= @user.name %>, <%= @user.email %>
+<%= @user.name %>
 <%= image_tag(@user.picture_url, :width => 600) if @user.picture.present? %>
+<br><br>
+My Listings:<br>
+<% @listing.each do |f|%>
+    <%= link_to f.item, listings_path+"/"+f.id.to_s%><br>
+<% end %>
+
+Reviews for my published listings:<br>
+<% @review.each do |f|%>
+    <%= link_to f.id %>
+<% end%>

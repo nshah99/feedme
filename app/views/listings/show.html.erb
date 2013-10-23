@@ -1,8 +1,37 @@
-<%= @listing.email %> , <%= @listing.item %>
-<% params%>
+ <%= @listing.item %><br><br>
+
 <% if params[:order_id] %>
-  Add Review..
+  <div class="container">
+  <div class="form-signin">
+
+
+      <%= form_for(@review) do |f| %>
+
+        <% params %>
+        <%= f.text_field :item ,value:@listing.item %><br>
+        
+        <%= f.text_area :review_text, placeholder: "Review"%>
+        
+        <%= f.hidden_field :user_id, value: @listing.user_id%>
+        <%= f.hidden_field :order_id, value: params[:order_id]%>
+        <%= f.hidden_field :listing_id, value: params[:id]%>
+        <%= f.submit "Publish my review", class: "btn btn-large btn-primary btn-block" %>
+      <% end %>
+</div>
+</div>
   <% else %>
-  <%= link_to "Place order", {:controller=>'orders' ,:action => "new",:listing_id => @listing.id}, class:"btn" %>
+ <br><br>
+  There are <%= @listing.reviews.count%> reviews for this listing
+<br><br>
+   <% if @listing.reviews.count > 0 %>
+     <% @listing.reviews.each do |f| %>
+             <% user = f.user%>
+	
+             <%= link_to "By "+user.name, users_path+"/"+user.id.to_s%><br>
+        Review:  <%= f.review_text %><br><br>
+
+      <%end %>
+   <% end %>
+      <%= link_to "Place order", {:controller=>'orders' ,:action => "new",:listing_id => @listing.id}, class:"btn" %>
 
 <% end %>

@@ -8,7 +8,7 @@ class OrdersController < ApplicationController
   @order = Order.new(order_params)
   @listing = Listing.find(params[:order][:listing_id])
   @order.listing_id = @listing.id
-  @order.from_id = current_user.id
+  @order.user_id = current_user.id
   @order.to_id = @listing.user_id
     if @order.save
       flash[:succes] = "Order placed successfully"

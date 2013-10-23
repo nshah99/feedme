@@ -13,9 +13,6 @@
 
 ActiveRecord::Schema.define(version: 20131023052407) do
 
-# Could not dump table "listing_votes" because of following NoMethodError
-#   undefined method `[]' for nil:NilClass
-
   create_table "listings", force: true do |t|
     t.string   "email"
     t.string   "name"
@@ -56,17 +53,6 @@ ActiveRecord::Schema.define(version: 20131023052407) do
     t.string   "special_request"
     t.string   "item"
   end
-
-  create_table "ratings", force: true do |t|
-    t.integer  "listing_id"
-    t.integer  "user_id"
-    t.integer  "score"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "ratings", ["listing_id"], name: "index_ratings_on_listing_id"
-  add_index "ratings", ["user_id"], name: "index_ratings_on_user_id"
 
   create_table "reviews", force: true do |t|
     t.integer  "order_id"

@@ -11,8 +11,27 @@ The other users of this website.
 Name: <%= link_to f.name, users_path+"/"+f.id.to_s %> <br>
 <% end %>
 <% else%>
-<p>
-Insert Awesome landing page for people who are not signed in.
-<p>
-<%= image_tag "cupcakes.jpg"%>
+<div class="container">
+
+      <div class="jumbotron">
+        <h1>Hungry for some home-cooked food?</h1>
+        <p class="lead">Find home-cooked meals nearby or enroll as a chef and share your cooking with foodies!</p>
+        <p><%= link_to "Sign up today!", '/signup', class: "btn btn-large btn-success" %></p>
+		 <p class="lead">OR </p>
+        <p><%= link_to "Sign into existing account", '/signin', class: "btn btn-large btn-success" %></p> 
+      </div>
+
+      <div class="row marketing">
+        <div class="col-lg-6">
+          <h4>Foodies</h4>
+          <p>Find home-cooked meals by enthusiastic chefs near you at any time. You can get a taste of different cultures and save time,money and find new friends while doing it!  </p>
+
+          <h4>Chefs</h4>
+          <p>Party of 2 and cooked for twenty? Don't worry! You can now share it with foodies and earn some money while doing it! </p>
+
+        </div>
+
+      </div>
+
+</div> <!-- /container -->
 <%end%>

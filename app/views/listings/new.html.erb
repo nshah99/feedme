@@ -5,8 +5,8 @@
       <%= form_for(@listing) do |f| %>
 
         
-        <%= f.text_field :name ,placeholder: "Name",class: "form-control" %><br>
-        <%= f.text_field :email,placeholder: "Email",class: "form-control" %><br>
+        <%= f.text_field :name ,value: current_user.name,class: "form-control" %><br>
+        <%= f.text_field :email,value: current_user.email,class: "form-control" %><br>
         <%= f.text_field :item, placeholder: "Listing",class: "form-control" %><br>
         <%= f.text_field :price, placeholder: "Price",class: "form-control" %><br>
         <%= f.text_field :quantity, placeholder: "Quantity",class: "form-control"%> <br>

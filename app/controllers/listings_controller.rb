@@ -19,6 +19,8 @@ class ListingsController < ApplicationController
   def show
     @listing = Listing.find(params[:id])
     @a = current_user
+    @review = Review.new
+    
   end
   def delete
   end
@@ -37,7 +39,7 @@ class ListingsController < ApplicationController
   end
   
   def listing_params
-    params.require(:listing).permit(:name,:email,:item,:price,:quantity,:address)
+    params.require(:listing).permit(:name,:email,:item,:price,:quantity,:address,:is_ordered)
   end
 
 end

@@ -24,6 +24,8 @@ class UsersController < ApplicationController
   end
   def show
     @user = User.find(params[:id])
+    @listing = @user.listings
+    @review = @user.reviews
   end
   
   private

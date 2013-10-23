@@ -1,16 +1,16 @@
 <div class="container">
   <div class="form-signin">
 
-
+    <h2 class="form-signin-heading">Please sign in</h2>
       <%= form_for(@listing) do |f| %>
 
         
-        <%= f.text_field :name ,placeholder: "Name" %><br>
-        <%= f.text_field :email,placeholder: "Email" %><br>
-        <%= f.text_field :item, placeholder: "Listing" %><br>
-        <%= f.text_field :price, placeholder: "Price" %><br>
-        <%= f.text_field :quantity, placeholder: "Quantity"%> <br>
-        <%= f.text_field :address, placeholder: "Location"%>
+        <%= f.text_field :name ,placeholder: "Name",class: "form-control" %><br>
+        <%= f.text_field :email,placeholder: "Email",class: "form-control" %><br>
+        <%= f.text_field :item, placeholder: "Listing",class: "form-control" %><br>
+        <%= f.text_field :price, placeholder: "Price",class: "form-control" %><br>
+        <%= f.text_field :quantity, placeholder: "Quantity",class: "form-control"%> <br>
+        <%= f.text_field :address, placeholder: "Location",class: "form-control"%>
         
         <%= f.submit "Publish my listing", class: "btn btn-large btn-primary btn-block" %>
       <% end %>

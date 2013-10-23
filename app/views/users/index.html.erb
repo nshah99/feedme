@@ -1,8 +1,18 @@
 
+<% if !current_user.nil?%>
 <p>
-  This page is currently showing all users
+  Logged in as <%= current_user.name%>
+</p>
+
+<p>
+The other users of this website.
 </p>
 <% @user.each do |f|%>
-Name: <%= f.name %> <br>
-Email ID: <%= f.email %> <br><br>
+Name: <%= link_to f.name, users_path+"/"+f.id.to_s %> <br>
 <% end %>
+<% else%>
+<p>
+Insert Awesome landing page for people who are not signed in.
+<p>
+<%= image_tag "cupcakes.jpg"%>
+<%end%>

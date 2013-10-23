@@ -3,11 +3,13 @@ class Listing < ActiveRecord::Base
   #validate :item, presence: true
   #validate :name, presence: true
   belongs_to :user
+  has_many :reviews
   default_scope -> { order('created_at DESC') }
   validates :item, presence: true
   validates :user_id, presence:true
   geocoded_by :address
   after_validation :geocode, :if => :address_changed?
+  has_many :orders
  def self.search(search)
     
     if search.nil?

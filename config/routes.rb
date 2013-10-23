@@ -1,6 +1,18 @@
 Feedme::Application.routes.draw do
+  #get "reviews/create"
+  #get "reviews/new"
+  #get "reviews/index"
+  #get "reviews/show"
+  #get "reviews/update"
+  #get "reviews/delete"
+  #get "orders/new"
+  #get "orders/create"
+  #get "orders/show"
+  #get "orders/index"
   resources :locations
   resources :listings
+  resources :orders
+  resources :reviews
   #get "users/new"
   #get "users/create"
   #get "users/update"
@@ -15,7 +27,7 @@ Feedme::Application.routes.draw do
   get "static_pages/contact"
   get "static_pages/home"
   get "static_pages/help"
-  root 'static_pages#home'
+  root 'users#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

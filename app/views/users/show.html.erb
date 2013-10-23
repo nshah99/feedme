@@ -1,2 +1,76 @@
-<%= @user.name %>, <%= @user.email %>
+<%= @user.name %>
 <%= image_tag(@user.picture_url, :width => 600) if @user.picture.present? %>
+<<<<<<< HEAD
+
+<div class="container">
+
+      <div class="row text-center">
+          <h2 id="username">Sahithya Baskaran </h2>
+      </div>
+
+      <div class="row text-center userimage">
+      <img src="https://fbcdn-profile-a.akamaihd.net/hprofile-ak-prn1/c170.50.621.621/s160x160/60396_10151623598338579_630528982_n.jpg" alt="User Image" height="100" width="100" class="img-rounded"> 
+
+      </div>
+
+      <div class="row text-center">
+          <p id="userdescription" class="userdes">Lorem ipsum dolor sit amet, sea nobis mediocritatem ex, erat propriae ea sit, nec ne dicam causae lobortis. Ius soluta veritus id, lobortis intellegat forensibus id his. Eam ad justo perpetua, ex eos graece appareat, vis idque tantas tritani ne. Nam timeam deseruisse ut, utamur sensibus ea has.</p>
+      </div>
+
+      <div class="row">
+            <div class="col-xs-4 text-center profiletab">
+            <h3>89</h3>
+            <p>Subscribers</p>
+            </div>
+            <div class="col-xs-4 text-center profiletab">
+            <h3>89</h3>
+            <p>Subscribing</p>
+            </div>
+            <div class="col-xs-4 text-center profiletab">
+            <h3>89</h3>
+            <p>Reviews</p>
+            </div>
+      </div>
+      <div class="row">
+
+
+      </div>
+      <div class="row">
+
+          <h4 class="profileentry">Address</h4>
+
+      </div>  
+      <div class="row">
+
+          <h4 class="profileentry">Cuisines</h4>
+
+      </div>
+
+            <p><%= link_to "Subscribe", '#', class: "btn btn-large btn-primary btn-block" %></p>    
+
+    </div><!-- /.container -->
+=======
+<br><br>
+My Listings:<br>
+<% @listing.each do |f|%>
+    <%= link_to f.item, listings_path+"/"+f.id.to_s%><br>
+<% end %><br><br>
+My Orders:
+<p>
+<% orders =@user.orders %>
+<% orders.each do |f|%>
+<br>
+<%= link_to f.item, orders_path+"/"+f.id.to_s%>
+<% end %>
+<p>
+
+Reviews for my published listings:
+*Replace the Name of user with image of user*<br><br>
+<% @review.each do |f|%>
+    
+ 
+ <% user = f.order.user%>
+<%=link_to user.name, users_path+"/"+user.id.to_s%> says: 
+  <%= f.review_text%><br><br>  
+<% end%>
+>>>>>>> 1d66d91662280fb7998309bd33c41f6badb2e40f

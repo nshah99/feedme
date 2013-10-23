@@ -1,0 +1,10 @@
+<p>
+  Index page
+  </p>
+ 
+  <% @order.each do |f|%>
+    <% if f.listing_id %>
+      
+      <%= link_to f.listing_id, listings_path+"/"+f.listing_id.to_s+"?order_id="+f.id.to_s%><br><br>
+    <% end%>
+  <% end %>

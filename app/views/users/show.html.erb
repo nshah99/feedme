@@ -1,6 +1,7 @@
 <%= @user.name %>
 <%= image_tag(@user.picture_url, :width => 600) if @user.picture.present? %>
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 <div class="container">
 
@@ -50,6 +51,8 @@
 
     </div><!-- /.container -->
 =======
+=======
+>>>>>>> 1d66d91662280fb7998309bd33c41f6badb2e40f
 <br><br>
 My Listings:<br>
 <% @listing.each do |f|%>
@@ -73,4 +76,7 @@ Reviews for my published listings:
 <%=link_to user.name, users_path+"/"+user.id.to_s%> says: 
   <%= f.review_text%><br><br>  
 <% end%>
+<<<<<<< HEAD
+>>>>>>> 1d66d91662280fb7998309bd33c41f6badb2e40f
+=======
 >>>>>>> 1d66d91662280fb7998309bd33c41f6badb2e40f

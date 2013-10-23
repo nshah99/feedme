@@ -1,4 +1,7 @@
 <h1>Your order.</h1>
 <p>
 <%= @order.item %>
+<br><br>
+<% f=@order%>
+  <%= link_to "Add Review", listings_path+"/"+f.listing_id.to_s+"?order_id="+f.id.to_s , class:"btn btn-primary"%><br><br>
 </p>

@@ -19,6 +19,7 @@ class OrdersController < ApplicationController
   end
 
   def show
+    @order = Order.find(params[:id])
   end
 
   def index
@@ -26,6 +27,6 @@ class OrdersController < ApplicationController
   end
 
   def order_params
-    params.require(:order).permit(:listing_id, :quantity, :special_request)
+    params.require(:order).permit(:item,:listing_id, :quantity, :special_request)
   end
 end

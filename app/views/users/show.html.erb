@@ -4,9 +4,22 @@
 My Listings:<br>
 <% @listing.each do |f|%>
     <%= link_to f.item, listings_path+"/"+f.id.to_s%><br>
+<% end %><br><br>
+My Orders:
+<p>
+<% orders =@user.orders %>
+<% orders.each do |f|%>
+<br>
+<%= link_to f.item, orders_path+"/"+f.id.to_s%>
 <% end %>
+<p>
 
-Reviews for my published listings:<br>
+Reviews for my published listings:
+*Replace the Name of user with image of user*<br><br>
 <% @review.each do |f|%>
-    <%= link_to f.id %>
+    
+ 
+ <% user = f.order.user%>
+<%=link_to user.name, users_path+"/"+user.id.to_s%> says: 
+  <%= f.review_text%><br><br>  
 <% end%>

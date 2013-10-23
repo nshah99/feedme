@@ -7,7 +7,7 @@
 
       <%= form_for(@review) do |f| %>
 
-        <% params %>
+
         <%= f.text_field :item ,value:@listing.item %><br>
         
         <%= f.text_area :review_text, placeholder: "Review"%>

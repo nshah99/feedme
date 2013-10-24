@@ -17,7 +17,8 @@ class ListingsController < ApplicationController
     
       #@listing = Listing.search(params[:search]) & Listing.near(params[:location],200)
       #if @listing.empty?
-       @listing = Listing.search(params[:search])
+       @listing = Listing.search(params)
+       
       #end
       #@nearby = Listing.search(params[:search])
     

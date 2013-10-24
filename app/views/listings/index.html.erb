@@ -7,11 +7,22 @@
     <%= text_field_tag :search, params[:search],placeholder:"Find chinese,dosa" %> <%= text_field_tag :location, params[:location],placeholder:"Near Atlanta/" %> 
     <%= submit_tag "Search", :name => nil %>
    </p>
+   <p>
+    <%= check_box_tag(:cheap) %>
+<%= label_tag(:cheap, "Low Price (<$5)") %>
+<%= check_box_tag(:average) %>
+<%= label_tag(:average, "Average Price ($5-$15)") %>
+<%= check_box_tag(:expensive) %>
+<%= label_tag(:expensive, "High Price (>$15)") %>
+
+   </p>
   <% end %>
+ 
   <% @listing.each do |f|%>
   Chef: <%= link_to f.name, users_path+"/"+f.user_id.to_s %> <br>
   Item: <%= link_to f.item, listings_path+"/"+f.id.to_s%><br>
   Location: <%= f.address%><br>
   Price: <%= f.price%><br>
-  Quantiy: <%= f.quantity%><br><br>
+  Quantiy: <%= f.quantity%><br>
+  Expected Time: <%= f.expected_time%><br><br>
   <% end %>

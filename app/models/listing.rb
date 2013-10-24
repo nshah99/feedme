@@ -11,7 +11,8 @@ class Listing < ActiveRecord::Base
   after_validation :geocode, :if => :address_changed?
   has_many :orders
   mount_uploader :picture, PictureUploader
- def self.search(search)
+ def self.search(params)
+    search = params[:search]
     
     if search.nil?
       search=""
@@ -22,7 +23,9 @@ class Listing < ActiveRecord::Base
 	find(:all, :conditions => ['quantity >?',0])
     else
       
-      find(:all,:conditions => ['quantity >?',0],:order=>"price")
+     # find(:all,:conditions => ['quantity >?',0],:order=>"expected_time")
+      find(:all,:order=>"expected_time")
+
     end
   end
 

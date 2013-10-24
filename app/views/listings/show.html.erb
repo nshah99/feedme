@@ -25,13 +25,14 @@
 <br><br>
    <% if @listing.reviews.count > 0 %>
      <% @listing.reviews.each do |f| %>
-             <% user = f.user%>
-	
+             <% order = f.order%>
+	     <% user = order.user %>
              <%= link_to "By "+user.name, users_path+"/"+user.id.to_s%><br>
         Review:  <%= f.review_text %><br><br>
 
       <%end %>
    <% end %>
+      <% if @listing.user.id !=current_user.id %>
       <%= link_to "Place order", {:controller=>'orders' ,:action => "new",:listing_id => @listing.id}, class:"btn" %>
-
+       <% end %>
 <% end %>

@@ -4,12 +4,14 @@
  
  <%= form_tag listings_path, :method => 'get' do %>
    <p>
-    <%= text_field_tag :search, params[:search] %>
+    <%= text_field_tag :search, params[:search],placeholder:"Find chinese,dosa" %> <%= text_field_tag :location, params[:location],placeholder:"Near Atlanta/" %> 
     <%= submit_tag "Search", :name => nil %>
    </p>
   <% end %>
   <% @listing.each do |f|%>
-  <%= link_to f.name, users_path+"/"+f.user_id.to_s %> <br>
+  Chef: <%= link_to f.name, users_path+"/"+f.user_id.to_s %> <br>
+  Item: <%= link_to f.item, listings_path+"/"+f.id.to_s%><br>
   Location: <%= f.address%><br>
-  <%= link_to f.item, listings_path+"/"+f.id.to_s%><br><br>
+  Price: <%= f.price%><br>
+  Quantiy: <%= f.quantity%><br><br>
   <% end %>

@@ -13,7 +13,14 @@ class ListingsController < ApplicationController
   end
 
   def index
-    @listing = Listing.search(params[:search])
+    
+    
+      @listing = Listing.search(params[:search]) & Listing.near(params[:location],200)
+      if @listing.empty?
+       @listing = Listing.search(params[:search])
+      end
+      @nearby = Listing.search(params[:search])
+    
   end
 
   def show

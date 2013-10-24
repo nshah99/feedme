@@ -1,7 +1,6 @@
 <%= @user.name %>
 <%= image_tag(@user.picture_url, :width => 600) if @user.picture.present? %>
-<<<<<<< HEAD
-<<<<<<< HEAD
+
 
 <div class="container">
 
@@ -28,7 +27,7 @@
             <p>Subscribing</p>
             </div>
             <div class="col-xs-4 text-center profiletab">
-            <h3>89</h3>
+            <h3><%= @user.reviews.count %></h3>
             <p>Reviews</p>
             </div>
       </div>
@@ -46,13 +45,11 @@
           <h4 class="profileentry">Cuisines</h4>
 
       </div>
-
+         <% if @user.id!=current_user.id %>
             <p><%= link_to "Subscribe", '#', class: "btn btn-large btn-primary btn-block" %></p>    
-
+          <% end %>
     </div><!-- /.container -->
-=======
-=======
->>>>>>> 1d66d91662280fb7998309bd33c41f6badb2e40f
+
 <br><br>
 My Listings:<br>
 <% @listing.each do |f|%>
@@ -75,8 +72,4 @@ Reviews for my published listings:
  <% user = f.order.user%>
 <%=link_to user.name, users_path+"/"+user.id.to_s%> says: 
   <%= f.review_text%><br><br>  
-<% end%>
-<<<<<<< HEAD
->>>>>>> 1d66d91662280fb7998309bd33c41f6badb2e40f
-=======
->>>>>>> 1d66d91662280fb7998309bd33c41f6badb2e40f
+<% end %>

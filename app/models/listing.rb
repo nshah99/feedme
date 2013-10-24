@@ -10,16 +10,34 @@ class Listing < ActiveRecord::Base
   geocoded_by :address
   after_validation :geocode, :if => :address_changed?
   has_many :orders
+  mount_uploader :picture, PictureUploader
  def self.search(search)
     
     if search.nil?
       search=""
     end
     search_condition = "%" + search + "%"
-    if search
-      find(:all, :conditions => ['item LIKE ? OR address LIKE ?', search_condition, search_condition])
+    if !search.empty?
+      find(:all, :conditions => ['item LIKE ? OR address LIKE ?', search_condition, search_condition]) & 
+	find(:all, :conditions => ['quantity >?',0])
     else
-      find(:all)
+      
+      find(:all,:conditions => ['quantity >?',0],:order=>"price")
     end
   end
+
+  def self.decrement_quantity(id,count)
+    
+    l = find(id)
+    quant = l.quantity
+    diff = quant - count
+    if diff>-1
+    l.update(quantity:diff)
+    true
+    else
+    false
+    end
+    
+  end
+
 end 

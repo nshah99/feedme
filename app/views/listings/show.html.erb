@@ -1,5 +1,5 @@
  <%= @listing.item %><br><br>
-
+<%= image_tag(@listing.picture_url, :width => 200, :height => 200) if @listing.picture.present? %>
 <% if params[:order_id] %>
   <div class="container">
   <div class="form-signin">

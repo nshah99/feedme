@@ -10,7 +10,12 @@
         <%= f.text_field :item, placeholder: "Listing",class: "form-control" %><br>
         <%= f.text_field :price, placeholder: "Price",class: "form-control" %><br>
         <%= f.text_field :quantity, placeholder: "Quantity",class: "form-control"%> <br>
-        <%= f.text_field :address, placeholder: "Location",class: "form-control"%>
+        <%= f.text_field :address, placeholder: "Location",class: "form-control"%> <br>
+        <%= f.text_field :cuisine, placeholder: "Cuisines",class: "form-control"%> <br>
+        <%= f.text_field :expected_time, placeholder: "When can you deliver?",class: "form-control"%> <br>
+<%= f.file_field :picture %> <br>
+
+
         
         <%= f.submit "Publish my listing", class: "btn btn-large btn-primary btn-block" %>
       <% end %>

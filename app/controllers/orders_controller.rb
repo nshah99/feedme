@@ -10,11 +10,12 @@ class OrdersController < ApplicationController
   @order.listing_id = @listing.id
   @order.user_id = current_user.id
   @order.to_id = @listing.user_id
-    if @order.save
+    if @order.save & Listing.decrement_quantity(@listing.id,@order.quantity)
       flash[:succes] = "Order placed successfully"
       redirect_to @order
     else 
-      render 'new'
+      flash[:fail] = "Check quantity"
+      redirect_to new_order_path(listing_id:@listing.id)
     end
   end
 

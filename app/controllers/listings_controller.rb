@@ -15,11 +15,11 @@ class ListingsController < ApplicationController
   def index
     
     
-      @listing = Listing.search(params[:search]) & Listing.near(params[:location],200)
-      if @listing.empty?
+      #@listing = Listing.search(params[:search]) & Listing.near(params[:location],200)
+      #if @listing.empty?
        @listing = Listing.search(params[:search])
-      end
-      @nearby = Listing.search(params[:search])
+      #end
+      #@nearby = Listing.search(params[:search])
     
   end
 
@@ -46,7 +46,7 @@ class ListingsController < ApplicationController
   end
   
   def listing_params
-    params.require(:listing).permit(:name,:email,:item,:price,:quantity,:address,:is_ordered)
+    params.require(:listing).permit(:name,:email,:item,:price,:quantity,:address,:is_ordered,:cuisine,:expected_time,:picture)
   end
 
 end

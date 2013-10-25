@@ -1,6 +1,7 @@
 <%= @user.name %>
 <%= image_tag(@user.picture_url, :width => 600) if @user.picture.present? %>
 <br><br>
+
 My Listings:<br>
 <% @listing.each do |f|%>
     <%= link_to f.item, listings_path+"/"+f.id.to_s%><br>

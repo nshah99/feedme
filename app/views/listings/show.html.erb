@@ -1,5 +1,8 @@
  <%= @listing.item %><br><br>
-
+<p>
+Food score: 
+<%= @listing.reputation_for(:votes).to_i%> people have given it a good rating
+</p>
 <% if params[:order_id] %>
   <div class="container">
   <div class="form-signin">
@@ -16,17 +19,20 @@
         <%= f.hidden_field :order_id, value: params[:order_id]%>
         <%= f.hidden_field :listing_id, value: params[:id]%>
         <%= f.submit "Publish my review", class: "btn btn-large btn-primary btn-block" %>
-      <% end %>
+      <%= link_to "up", vote_listing_path(@listing, type: "up"), method: "post" %>
+  | <%= link_to "down", vote_listing_path(@listing, type: "down"), method: "post" %>
+       <% end %>
 </div>
 </div>
   <% else %>
  <br><br>
   There are <%= @listing.reviews.count%> reviews for this listing
 <br><br>
+
    <% if @listing.reviews.count > 0 %>
      <% @listing.reviews.each do |f| %>
-             <% user = f.user%>
-	
+             <% user = f.order.user%>
+	     
              <%= link_to "By "+user.name, users_path+"/"+user.id.to_s%><br>
         Review:  <%= f.review_text %><br><br>
 

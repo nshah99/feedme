@@ -10,6 +10,9 @@ class Listing < ActiveRecord::Base
   geocoded_by :address
   after_validation :geocode, :if => :address_changed?
   has_many :orders
+
+  # Added for reputation-system
+  has_reputation :votes, source: :user, aggregated_by: :sum
  def self.search(search)
     
     if search.nil?

@@ -10,7 +10,9 @@ Feedme::Application.routes.draw do
   #get "orders/show"
   #get "orders/index"
   resources :locations
-  resources :listings
+  resources :listings do
+    member { post :vote}
+  end
   resources :orders
   resources :reviews
   #get "users/new"

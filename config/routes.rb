@@ -22,7 +22,9 @@ Feedme::Application.routes.draw do
        end
   end
   resources :locations
-  resources :listings
+  resources :listings do
+    member { post :vote}
+  end
   resources :orders
   resources :reviews
   #get "users/new"

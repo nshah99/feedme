@@ -10,11 +10,19 @@ class Listing < ActiveRecord::Base
   geocoded_by :address
   after_validation :geocode, :if => :address_changed?
   has_many :orders
+<<<<<<< HEAD
   mount_uploader :picture, PictureUploader
 
   def self.search(search)
 
 
+=======
+
+  # Added for reputation-system
+  has_reputation :votes, source: :user, aggregated_by: :sum
+ def self.search(search)
+    
+>>>>>>> reputation-system
     if search.nil?
       search=""
     end

@@ -8,10 +8,17 @@ gem 'bcrypt-ruby', '3.0.1'
 gem 'geocoder'
 gem 'nifty-generators'
 gem 'carrierwave'
+
 gem 'anjlab-bootstrap-rails', :require => 'bootstrap-rails',
                           :github => 'anjlab/bootstrap-rails',
                           :branch => '3.0.0'
 #gem 'bootstrap-datetimepicker-rails'
+
+#agem 'activerecord-reputation-system', require: 'reputation_system'
+#gem 'protected_attributes' # added so that we can use repuation system gem
+gem 'activerecord-reputation-system', github: 'NARKOZ/activerecord-reputation-system', branch: 'rails4'
+
+
 group :development, :test do
   gem 'sqlite3', '1.3.8'
   gem 'rspec-rails', '2.13.1'

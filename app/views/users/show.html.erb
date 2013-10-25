@@ -51,6 +51,7 @@
     </div><!-- /.container -->
 
 <br><br>
+
 My Listings:<br>
 <% @listing.each do |f|%>
     <%= link_to f.item, listings_path+"/"+f.id.to_s%><br>

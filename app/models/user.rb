@@ -13,7 +13,15 @@ class User < ActiveRecord::Base
                     uniqueness: { case_sensitive: false }
   has_secure_password
   validates :password, length: { minimum: 6 }
-  mount_uploader :picture, PictureUploader 
+  mount_uploader :picture, PictureUploader
+  has_many :evaluations, class_name: "RSEvaluation", as: :source
+
+  has_reputation :votes, source: {reputation: :votes, of: :listings}, aggregated_by: :sum
+
+  def voted_for?(listing)
+    evaluations.where(target_type: listing.class, target_id: listing.id).present?
+  end
+
   def User.new_remember_token
     SecureRandom.urlsafe_base64
   end

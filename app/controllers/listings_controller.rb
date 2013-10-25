@@ -86,6 +86,13 @@ class ListingsController < ApplicationController
     end
   end
   
+  def vote
+    value = params[:type] == "up" ? 1 : -1
+    @listing = Listing.find(params[:id])
+    @listing.add_or_update_evaluation(:votes, value, current_user)
+    redirect_to :back, notice: "Thank you for voting"
+  end
+  
   def listing_params
     params.require(:listing).permit(:count,:name,:email,:item,:price,:quantity,:address,:is_ordered,:cuisine,:expected_date,:expected_time,:picture)
   end

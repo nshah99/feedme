@@ -1,4 +1,5 @@
 GIT
+<<<<<<< HEAD
   remote: git://github.com/anjlab/bootstrap-rails.git
   revision: addb7143365f97f938e3bdbb2ccfc52591230eda
   branch: 3.0.0
@@ -6,6 +7,13 @@ GIT
     anjlab-bootstrap-rails (3.0.0.rc2)
       railties (>= 3.0)
       sass (>= 3.2)
+=======
+  remote: git://github.com/NARKOZ/activerecord-reputation-system.git
+  revision: 01197ad78cac3136317b2884b61ed3da34c607d0
+  branch: rails4
+  specs:
+    activerecord-reputation-system (2.0.2)
+>>>>>>> reputation-system
 
 GEM
   remote: https://rubygems.org/
@@ -165,7 +173,11 @@ PLATFORMS
   x86-mingw32
 
 DEPENDENCIES
+<<<<<<< HEAD
   anjlab-bootstrap-rails!
+=======
+  activerecord-reputation-system!
+>>>>>>> reputation-system
   bcrypt-ruby (= 3.0.1)
   capybara (= 2.1.0)
   carrierwave

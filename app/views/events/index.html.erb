@@ -1,2 +1,5 @@
 <h1>Events#index</h1>
 <p>Find me in app/views/events/index.html.erb</p>
+ <% @event.each do |f|%>
+ <%= link_to f.title,user_event_path(current_user,f) %><br><br>
+ <% end %>

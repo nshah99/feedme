@@ -56,14 +56,7 @@ My Listings:<br>
 <% @listing.each do |f|%>
     <%= link_to f.item, listings_path+"/"+f.id.to_s%><br>
 <% end %><br><br>
-My Orders:
-<p>
-<% orders =@user.orders %>
-<% orders.each do |f|%>
-<br>
-<%= link_to f.item, orders_path+"/"+f.id.to_s%>
-<% end %>
-<p>
+
 
 Reviews for my published listings:
 *Replace the Name of user with image of user*<br><br>

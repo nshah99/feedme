@@ -4,12 +4,23 @@
   Logged in as <%= current_user.name%>
 </p>
 
+
+My Orders:
 <p>
-The other users of this website.
-</p>
-<% @user.each do |f|%>
-Name: <%= link_to f.name, users_path+"/"+f.id.to_s %> <br>
+<% orders =current_user.orders %>
+<% orders.each do |f|%>
+<br>
+<%= link_to f.item, orders_path+"/"+f.id.to_s%>
 <% end %>
+</p>
+My Events:
+<p>
+<% events = current_user.events %>
+<% events.each do |f|%>
+<br>
+<%= link_to f.title, user_event_path(current_user,f) %>
+<% end %>
+</p>
 <% else%>
 <div class="container">
 

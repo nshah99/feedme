@@ -3,7 +3,7 @@ ruby '2.0.0'
 #ruby-gemset=railstutorial_rails_4_0
 
 gem 'rails', '4.0.0'
-# gem 'bootstrap-sass', '2.3.2.0'
+#gem 'bootstrap-sass', '2.3.2.0'
 gem 'bcrypt-ruby', '3.0.1'
 gem 'geocoder'
 gem 'nifty-generators'
@@ -17,7 +17,7 @@ gem 'anjlab-bootstrap-rails', :require => 'bootstrap-rails',
 #agem 'activerecord-reputation-system', require: 'reputation_system'
 #gem 'protected_attributes' # added so that we can use repuation system gem
 gem 'activerecord-reputation-system', github: 'NARKOZ/activerecord-reputation-system', branch: 'rails4'
-
+gem 'mapbox-rails'
 
 group :development, :test do
   gem 'sqlite3', '1.3.8'

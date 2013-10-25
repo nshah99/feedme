@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131024083845) do
+ActiveRecord::Schema.define(version: 20131024190125) do
 
 # Could not dump table "listing_votes" because of following NoMethodError
 #   undefined method `[]' for nil:NilClass
@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(version: 20131024083845) do
     t.float    "longitude"
     t.string   "address"
     t.string   "picture"
+    t.datetime "expected_date"
   end
 
   add_index "listings", ["user_id", "created_at"], name: "index_listings_on_user_id_and_created_at"

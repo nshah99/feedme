@@ -16,9 +16,11 @@
 
 <h3>Nearby locations</h3>
 <ul>
+   <% if !@location.nearbys(10).nil? %>
 <% for location in @location.nearbys(10) %>
   <li><%= link_to location.address, location %> (<%= location.distance.round(2) %> miles)</li>
 <% end %>
+  <% end %>
 </ul>
 <p>
   <%= link_to "Edit", edit_location_path(@location) %> |

@@ -13,9 +13,9 @@
         <%= f.text_field :address, placeholder: "Location",class: "form-control"%> <br>
         <%= f.text_field :cuisine, placeholder: "Cuisines",class: "form-control"%> <br>
         
-       Expected Date: <%= date_field :date, placeholder: "When can you deliver? ", class: "form-control" %><br>
+       Expected Date: <%= f.date_field :expected_date, placeholder: "When can you deliver? ", class: "form-control" %><br>
 
-       Expected Time:<input type="time" name="time">
+       Expected Time:<input type="time" name="expected_time">
        <%#f.hidden_field :expected_time, value=""%>
    Add a  Picture: <%= f.file_field :picture %> <br>
 

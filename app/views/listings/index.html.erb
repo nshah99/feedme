@@ -16,6 +16,16 @@
 <%= label_tag(:expensive, "High Price (>$15)") %>
 
    </p>
+
+    <div class="field">
+      <%= radio_button_tag(:close,1) %>
+    <%= label_tag(:close, "Less than a mile ",:style =>"display:inline") %>
+    </div>
+    <div class="field">
+      <%= radio_button_tag(:far,1) %>
+    <%= label_tag(:far, "Less than 5 miles ",:style =>"display:inline") %>
+    </div> 
+    
   <% end %>
  
   <% @listing.each do |f|%>
@@ -24,5 +34,7 @@
   Location: <%= f.address%><br>
   Price: <%= f.price%><br>
   Quantiy: <%= f.quantity%><br>
-  Expected Time: <%= f.expected_time%><br><br>
+  Expected Time: <%= f.expected_time%><br>
+  Number of reviews for this listing: <%= f.reviews.count%><br>
+  Number of reviews for this chef: <%= f.user.reviews.count%><br><br>
   <% end %>

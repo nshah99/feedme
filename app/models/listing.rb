@@ -11,20 +11,21 @@ class Listing < ActiveRecord::Base
   after_validation :geocode, :if => :address_changed?
   has_many :orders
   mount_uploader :picture, PictureUploader
- def self.search(params)
-    search = params[:search]
-    
+
+  def self.search(search)
+
+
     if search.nil?
       search=""
     end
     search_condition = "%" + search + "%"
     if !search.empty?
       find(:all, :conditions => ['item LIKE ? OR address LIKE ?', search_condition, search_condition]) & 
-	find(:all, :conditions => ['quantity >?',0])
+	find(:all,:conditions => ['quantity >? AND expected_time>?',0,Time.now])
     else
       
-     # find(:all,:conditions => ['quantity >?',0],:order=>"expected_time")
-      find(:all,:order=>"expected_time")
+      find(:all,:conditions => ['quantity >? AND expected_time>?',0,Time.now],:order=>"expected_time")
+      #find(:all)
 
     end
   end

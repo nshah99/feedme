@@ -1,5 +1,7 @@
 class User < ActiveRecord::Base
   
+  has_many :attendees
+  has_many :events, through: :attendees
   has_many :listings, dependent: :destroy
   has_many :orders, dependent: :destroy
   has_many :reviews, dependent: :destroy

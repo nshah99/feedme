@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="form-signin">
+
+    <h2 class="form-signin-heading">Please sign in</h2>
+      <%= form_for [@user,@event] do |f| %>
+
+        
+        <%= f.text_field :title ,placeholder:"Event title",class: "form-control" %><br>
+        <%= f.text_area :description,placeholder:"Description",class: "form-control" %><br>
+        <%= f.text_field :address, placeholder: "Location",class: "form-control"%> <br>
+Expected Date: <%= f.date_field :event_date, placeholder: "When can you deliver? ", class: "form-control" %><br>
+
+       Expected Time:<input type="time" name="event_time" class="form-control">
+       <%#f.hidden_field :expected_time, value=""%>
+
+
+        
+        <%= f.submit "Publish my event", class: "btn btn-large btn-primary btn-block" %>
+      <% end %>
+</div>
+</div>

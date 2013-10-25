@@ -1,4 +1,11 @@
 Feedme::Application.routes.draw do
+  #get "events/new"
+  #get "events/create"
+  #get "events/index"
+  #get "events/update"
+  #get "events/edit"
+  #get "events/delete"
+  #get "events/show"
   #get "reviews/create"
   #get "reviews/new"
   #get "reviews/index"
@@ -9,6 +16,11 @@ Feedme::Application.routes.draw do
   #get "orders/create"
   #get "orders/show"
   #get "orders/index"
+  resources :events do 
+       member do
+         get :attent_event , :only=>[:show,:index]
+       end
+  end
   resources :locations
   resources :listings
   resources :orders
@@ -17,7 +29,13 @@ Feedme::Application.routes.draw do
   #get "users/create"
   #get "users/update"
   #get "users/delete"
-  resources :users
+  resources :users do
+    resources :events do
+            member do
+               get 'attend', :only => [:new,:create,:edit,:update]
+            end
+    end
+  end
   resources :sessions, only: [:new, :create, :destroy]
   match '/signup',  to: 'users#new',  via: 'get'
   match '/signin',  to: 'sessions#new',         via: 'get'

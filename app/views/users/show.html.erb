@@ -1,11 +1,11 @@
-<%= @user.name %>
+
 <%= image_tag(@user.picture_url, :width => 600) if @user.picture.present? %>
 
 
 <div class="container">
 
       <div class="row text-center">
-          <h2 id="username">Sahithya Baskaran </h2>
+          <h2 id="username"><%= @user.name%></h2>
       </div>
 
       <div class="row text-center userimage">
@@ -38,12 +38,12 @@
       <div class="row">
 
           <h4 class="profileentry">Address</h4>
-
+	  
       </div>  
       <div class="row">
 
           <h4 class="profileentry">Cuisines</h4>
-
+          <%= @user.cuisines%>
       </div>
          <% if @user.id!=current_user.id %>
             <p><%= link_to "Subscribe", '#', class: "btn btn-large btn-primary btn-block" %></p>    

@@ -1,12 +1,11 @@
  <%= @listing.item %><br><br>
-<<<<<<< HEAD
+
 <%= image_tag(@listing.picture_url, :width => 200, :height => 200) if @listing.picture.present? %>
-=======
 <p>
 Food score: 
 <%= @listing.reputation_for(:votes).to_i%> people have given it a good rating
 </p>
->>>>>>> reputation-system
+
 <% if params[:order_id] %>
   <div class="container">
   <div class="form-signin">
@@ -35,13 +34,13 @@ Food score:
 
    <% if @listing.reviews.count > 0 %>
      <% @listing.reviews.each do |f| %>
-<<<<<<< HEAD
+
              <% order = f.order%>
 	     <% user = order.user %>
-=======
+
              <% user = f.order.user%>
 	     
->>>>>>> reputation-system
+
              <%= link_to "By "+user.name, users_path+"/"+user.id.to_s%><br>
         Review:  <%= f.review_text %><br><br>
 

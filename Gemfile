@@ -10,8 +10,8 @@ gem 'nifty-generators'
 gem 'carrierwave'
 
 gem 'anjlab-bootstrap-rails', :require => 'bootstrap-rails',
-                          :github => 'anjlab/bootstrap-rails',
-                          :branch => '3.0.0'
+                           :github => 'anjlab/bootstrap-rails',
+                           :branch => '3.0.0'
 #gem 'bootstrap-datetimepicker-rails'
 
 #agem 'activerecord-reputation-system', require: 'reputation_system'

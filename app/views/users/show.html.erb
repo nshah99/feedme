@@ -14,7 +14,7 @@
       </div>
 
       <div class="row text-center">
-          <p id="userdescription" class="userdes">Lorem ipsum dolor sit amet, sea nobis mediocritatem ex, erat propriae ea sit, nec ne dicam causae lobortis. Ius soluta veritus id, lobortis intellegat forensibus id his. Eam ad justo perpetua, ex eos graece appareat, vis idque tantas tritani ne. Nam timeam deseruisse ut, utamur sensibus ea has.</p>
+          <p id="userdescription" class="userdes">Lorem ipsum dolor sit amet, sea nobis mediocritatem ex, erat propriae ea sit, nec ne dicam causae lobortis. Ius soluta veritus id, lobortis intellegat forensibus id his. Eam ad justo perpetua, ex eos graece appareat, vis idque tantas tritani ne. Nam timeam deseruisse ut, utamur sensibus ea has.</p> <!-- replace with user description value here -->
       </div>
 
       <div class="row">
@@ -50,20 +50,31 @@
           <% end %>
     </div><!-- /.container -->
 
-<br><br>
+<hr>
 
-My Listings:<br>
+<div class="container">
+<h4>My Listings</h4>
+<br>
 <% @listing.each do |f|%>
-    <%= link_to f.item, listings_path+"/"+f.id.to_s%><br>
-<% end %><br><br>
-
-
-Reviews for my published listings:
+<div class="row">
+            <div class="col-xs-2 text-center">
+            <h3>FRI</h3> <!-- place day of week of listing date here -->
+            <p>Oct 26</p> <!-- place month and date of listing date here -->
+          </div>
+            <div class="col-xs-10 text-left">
+              <br>
+                  <%= link_to f.item, listings_path+"/"+f.id.to_s%><br>
+            </div>
+</div>
+<% end %>
+</div>
+<hr>
+<div class="container">
+<h4>My Reviews</h4>
 *Replace the Name of user with image of user*<br><br>
 <% @review.each do |f|%>
-    
- 
  <% user = f.order.user%>
 <%=link_to user.name, users_path+"/"+user.id.to_s%> says: 
   <%= f.review_text%><br><br>  
 <% end %>
+</div>

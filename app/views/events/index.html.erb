@@ -1,5 +1,15 @@
-<h1>Events#index</h1>
+<h1>Events</h1>
 <p>Find me in app/views/events/index.html.erb</p>
  <% @event.each do |f|%>
- <%= link_to f.title,user_event_path(current_user,f) %><br><br>
+ <div class="row">
+            <div class="col-xs-2 text-center">
+            <h3>FRI</h3> <!-- place day of week of event date here -->
+            <p>Oct 26</p> <!-- place month and date of event date here -->
+          </div>
+            <div class="col-xs-10 text-left">
+              <br>
+               <%= link_to f.title,user_event_path(current_user,f) %>
+            </div>
+</div>
+
  <% end %>

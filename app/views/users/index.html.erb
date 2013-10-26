@@ -48,6 +48,20 @@
             </div>
 </div>
 <% end %>
+<h2 class="text-left">Feed</h2>
+
+
+<% @feed.each do |f|%>
+<div>
+            <div class="col-xs-2 text-center">
+            <% if f.is_a? Order%>
+            <%= f.user.name%> ordered <%= f.item %> from <%= f.listing.user.name %> <br><br>
+            <% elsif f.is_a? Listing%>
+               <%= f.user.name%> posted <%= f.item%>
+            <% else %>
+            <% end %>
+</div>
+<% end %>
 
  </div> <!--container end -->
 

@@ -56,6 +56,11 @@ class UsersController < ApplicationController
     moy[11]="Nov"
     moy[12]="Dec"
     @moy = moy
+    
+    listings = Listing.all.limit(10)
+    events = Event.all.limit(10)
+    orders = Order.all.limit(10)
+    @feed = (listings+events+orders).sort_by(&:created_at).reverse[0..9]
   end
   def show
     @user = User.find(params[:id])

@@ -3,8 +3,9 @@
  <% @event.each do |f|%>
  <div class="row">
             <div class="col-xs-2 text-center">
-            <h3>FRI</h3> <!-- place day of week of event date here -->
-            <p>Oct 26</p> <!-- place month and date of event date here -->
+            <% date = f.event_time%>
+            <h3><%= @dow[date.wday]%></h3> <!-- place day of week of event date here -->
+            <p><%= @moy[date.month]%> <%= date.day %></p> <!-- place month and date of event date here -->
           </div>
             <div class="col-xs-10 text-left">
               <br>

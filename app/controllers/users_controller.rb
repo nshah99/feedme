@@ -33,6 +33,29 @@ class UsersController < ApplicationController
   end
   def index
     @user = User.all
+    dow={}
+    dow[0] = "Sunday"
+    dow[1] = "Monday"
+    dow[2] = "Tuesday"
+    dow[3] = "Wednesday"
+    dow[4] = "Thursday"
+    dow[5] = "Friday"
+    dow[6] = "Saturday"
+    @dow = dow
+    moy = {}
+    moy[1]="Jan"
+    moy[2]="Feb"
+    moy[3]="March"
+    moy[4]="April"
+    moy[5]="May"
+    moy[6]="June"
+    moy[7]="July"
+    moy[8]="Aug"
+    moy[9]="Sept"
+    moy[10]="Oct"
+    moy[11]="Nov"
+    moy[12]="Dec"
+    @moy = moy
   end
   def show
     @user = User.find(params[:id])

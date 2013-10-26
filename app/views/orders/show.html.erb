@@ -1,7 +1,28 @@
-<h1>Your order.</h1>
-<p>
-<%= @order.item %>
+
+<h1 class="text-muted"><%= @order.item %></h1>
+<div class="container">
+<ul class="list-inline">
+  <li><h4>Cooked By: </h4></li>
+  <li>Chef name</l1> <!-- place author of listing here -->
+</ul>	
+<ul class="list-inline">
+  <li><h4>Order Quantity: </h4></li>
+  <li>3</l1> <!-- place order quantity here -->
+</ul>
+<ul class="list-inline">
+  <li><h4>Date and Time of Pickup: </h4></li>
+  <li>15/12/2012</l1> <!-- place order date here -->
+  <li> 09:00 AM </l1> <!-- place order time here -->
+</ul>
+<ul class="list-inline">
+  <li><h4>Special Dietary Requests:</h4></li>
+  <li>Vegetarian</l1> <!-- place special dietary requests here -->
+</ul>
+
+<ul>
 <br><br>
 <% f=@order%>
-  <%= link_to "Add Review", listings_path+"/"+f.listing_id.to_s+"?order_id="+f.id.to_s , class:"btn btn-primary"%><br><br>
-</p>
+  <%= link_to "Add Review", listings_path+"/"+f.listing_id.to_s+"?order_id="+f.id.to_s , class: "btn btn-primary"%><br><br>
+</ul>
+
+</div>	

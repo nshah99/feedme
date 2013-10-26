@@ -1,10 +1,22 @@
 
 <% if !current_user.nil?%>
 <p>
-  Logged in as <%= current_user.name%>
+  <!-- Hi <%= current_user.name%>!</h1> -->
 </p>
-
-
+<div class="container">
+  
+<div class="row">
+    <div class="col-xs-4 text-center hometab">
+        <%= link_to "Profile", '/users/show', class: "btn btn-large btn-link btn-block"%>
+    </div>  
+    <div class="col-xs-4 text-center hometab">
+        <%= link_to "Search", '/listings/index', class: "btn btn-large btn-link btn-block" %>
+    </div> 
+    <div class="col-xs-4 text-center hometab">
+        <%= link_to "Create Listing", '/listings/new', class: "btn btn-large btn-link btn-block" %>
+    </div>       
+</div>  
+<hr>
 My Orders:
 <p>
 <% orders =current_user.orders %>
@@ -21,6 +33,9 @@ My Events:
 <%= link_to f.title, user_event_path(current_user,f) %>
 <% end %>
 </p>
+
+ </div> <!--container end -->
+
 <% else%>
 <div class="container">
 

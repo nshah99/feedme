@@ -1,11 +1,22 @@
 
 <% if !current_user.nil?%>
-
+<br><br><br>
+<div class="row">
+  <h2 class="text-left">Top Listings (Based on popularity)</h2>
+  <% @top5.each do |f|%>
+    <%= link_to f.item, listing_path(f)%><br><br>
+  <% end %>
+  <br><br>
+  <h2 class="text-left">Try these (Based on cuisines)</h2>
+  <% @reco.each do |f|%>
+    <%= link_to f.item, listing_path(f)%><br><br>
+  <% end %>
+</div>
 <div class="container">
   
 <div class="row">
     <div class="col-xs-4 text-center hometab">
-        <%= link_to "Profile", listings_path , class: "btn btn-large btn-link btn-block"%>
+        <%= link_to "Profile", user_path(current_user) , class: "btn btn-large btn-link btn-block"%>
     </div>  
     <div class="col-xs-4 text-center hometab">
         <%= link_to "Search", listings_path, class: "btn btn-large btn-link btn-block" %>
@@ -29,7 +40,7 @@
           </div>
             <div class="col-xs-10 text-left">
               <br>
-              <%= link_to f.item, orders_path+"/"+f.id.to_s%>
+              <%= link_to f.item, order_path(f)%>
             </div>
 </div>
 <% end %> <br><br>

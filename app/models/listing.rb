@@ -4,12 +4,20 @@ class Listing < ActiveRecord::Base
   #validate :name, presence: true
   belongs_to :user
   has_many :reviews
-  default_scope -> { order('created_at DESC') }
+  has_many :orders
+  #default_scope -> { order('listings.created_at DESC') }
+  scope :ordered_by_time, :conditions=>['expected_time>?',Time.now],:order=> "expected_time"
+  scope :top5,
+    select("listings.id, count(orders.id) AS orders_count").
+    joins(:orders).
+    where("listings.expected_time>?",Time.now).
+    group("listings.id").
+    order("orders_count DESC")
+    #limit(5)
   validates :item, presence: true
   validates :user_id, presence:true
   geocoded_by :address
   after_validation :geocode, :if => :address_changed?
-  has_many :orders
   mount_uploader :picture, PictureUploader
 
 
@@ -44,6 +52,28 @@ class Listing < ActiveRecord::Base
     false
     end
     
+  end
+  
+  def self.get_similar_listings(listing)
+    cuisine = listing.cuisine.split(',').collect{|x| x.strip}
+    result = []
+    Listing.all.each do |f|
+      if f.id !=listing.id
+        x = f.cuisine.split(',').collect{|x| x.strip}
+          if cuisine.any?{ |w| x.include?(w)}
+            result.append(f)
+          end
+      end
+    end
+    return result
+  end
+
+  def self.get_objects_by_id(id_list)
+    result = []
+    id_list.each do |f|
+      result.append(find(f.id))
+    end
+    return result
   end
 
 end 

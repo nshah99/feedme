@@ -5,9 +5,15 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
+    @user.ip = "98.242.64.230"
       if @user.save
         sign_in @user
-        flash[:success] = "Welcome to FeedMe !!"
+        if @user.ip == "98.242.64.230"
+          flash[:success] = "98.242.64.230"
+        else
+          flash[:failure]=  9999999999999999
+        end
+   
         redirect_to @user
       else
          render 'new'
@@ -57,19 +63,35 @@ class UsersController < ApplicationController
     moy[12]="Dec"
     @moy = moy
     
-    listings = Listing.all.limit(10)
-    events = Event.all.limit(10)
-    orders = Order.all.limit(10)
-    @feed = (listings+events+orders).sort_by(&:created_at).reverse[0..9]
+    @allListing = Listing.all
+    @listings = @allListing[0..9]
+    @events = Event.all.limit(10)
+    @orders = Order.all.limit(10)
+    id_top5 = Listing.top5
+    @top5 = Listing.get_objects_by_id(id_top5)
+    @feed = (@listings+@events+@orders).sort_by(&:created_at).reverse[0..9]
+    @reco = is_comprende(@allListing)
   end
   def show
     @user = User.find(params[:id])
     @listing = @user.listings
     @review = @user.reviews
   end
+
+  def is_comprende(listings)
+    
+    user_cuisines = current_user.cuisines.split(',').collect{|x| x.strip}
+    suggested_listings = []
+    listings.each do |f|
+      if f.cuisine.in?(user_cuisines)
+        suggested_listings.append(f)
+      end
+    end
+    return suggested_listings
+  end
   
   private
   def user_params
-      params.require(:user).permit(:email,:password,:name,:password_confirmation,:picture,:description,:cuisines)
+      params.require(:user).permit(:ip,:email,:password,:name,:password_confirmation,:picture,:description,:cuisines)
   end
 end

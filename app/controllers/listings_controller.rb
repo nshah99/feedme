@@ -61,7 +61,8 @@ class ListingsController < ApplicationController
     @listing = Listing.find(params[:id])
     @a = current_user
     @review = Review.new
-    
+    current_listings = Listing.ordered_by_time
+    @reco = Listing.get_similar_listings(@listing)
   end
   def delete
   end

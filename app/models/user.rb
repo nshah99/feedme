@@ -17,7 +17,8 @@ class User < ActiveRecord::Base
   has_many :evaluations, class_name: "RSEvaluation", as: :source
 
   has_reputation :votes, source: {reputation: :votes, of: :listings}, aggregated_by: :sum
-
+  geocoded_by :ip
+  after_validation :geocode, :if => :ip_changed?
   def voted_for?(listing)
     evaluations.where(target_type: listing.class, target_id: listing.id).present?
   end

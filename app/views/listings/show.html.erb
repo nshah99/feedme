@@ -2,10 +2,16 @@
 
 <%= image_tag(@listing.picture_url, :width => 200, :height => 200) if @listing.picture.present? %>
 <p>
-Food score: 
+Food score:
 <%= @listing.reputation_for(:votes).to_i%> people have given it a good rating
 </p>
-
+<p>
+Similar listings:
+<br>
+<% @reco.each do |f|%>
+<%=link_to f.item,listing_path(f)%><br><br>
+<% end %>
+</p>
 <% if params[:order_id] %>
   <div class="container">
   <div class="form-signin">

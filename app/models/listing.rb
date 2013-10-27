@@ -30,7 +30,7 @@ class Listing < ActiveRecord::Base
     end
     search_condition = "%" + search + "%"
     if !search.empty?
-      find(:all, :conditions => ['item LIKE ? OR address LIKE ?', search_condition, search_condition]) & 
+      find(:all, :conditions => ['item LIKE ? OR address LIKE ? OR cuisine LIKE ? OR tags LIKE ?', search_condition, search_condition,search_condition,search_condition]) & 
 	find(:all,:conditions => ['quantity >? AND expected_time>?',0,Time.now])
     else
       

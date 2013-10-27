@@ -70,7 +70,9 @@ class UsersController < ApplicationController
     id_top5 = Listing.top5
     @top5 = Listing.get_objects_by_id(id_top5)
     @feed = (@listings+@events+@orders).sort_by(&:created_at).reverse[0..9]
-    @reco = is_comprende(@allListing)
+    if !current_user.nil?
+     @reco = is_comprende(@allListing)
+    end
   end
   def show
     @user = User.find(params[:id])

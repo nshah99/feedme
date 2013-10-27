@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131027011628) do
+ActiveRecord::Schema.define(version: 20131027095736) do
 
   create_table "attendees", force: true do |t|
     t.integer  "user_id"
@@ -52,6 +52,7 @@ ActiveRecord::Schema.define(version: 20131027011628) do
     t.string   "address"
     t.string   "picture"
     t.datetime "expected_date"
+    t.string   "tags"
   end
 
   add_index "listings", ["user_id", "created_at"], name: "index_listings_on_user_id_and_created_at"

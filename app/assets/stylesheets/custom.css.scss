@@ -307,9 +307,13 @@ padding-right: 30px;
   margin-top:300px;
 }
 
-.searchfilter{
-  
-  margin-top: 500px;
+.in.collapse+a.btn.showdetails:before
+{
+    content:'Hide filters «';
+}
+.collapse+a.btn.showdetails:before
+{
+    content:'Show filters »';
 }
 
 

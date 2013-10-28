@@ -14,31 +14,36 @@
 <!-- Insert map here -->
     <!--<div id="map"></div>-->
 
-<!--<div class="searchfilter">-->
-  <div class="container">
-    <div class="col-xs-6">
-               <ul class="list-inline">
-                <li><h2>Filter By Price</h2></li><br>
-                <l1> <div class="checkbox-inline"><%= check_box_tag(:cheap) %> <%= label_tag(:cheap, "Low Price (<$5)") %> </div></li>
-                <li> <div class="checkbox-inline"><%= check_box_tag(:average) %> <%= label_tag(:average, "Average Price ($5-$15)") %></div></li>
-                <li><div class="checkbox-inline"><%= check_box_tag(:expensive) %> <%= label_tag(:expensive, "High Price (>$15)") %></div> </li>
-              </ul>  
-    </div>
-     <div class="col-xs-6">
-               <ul class="list-inline">
-        <li><h2>Filter By Distance</h2></li><br>
-                     <li>
-                        <div class="field">
-                        <%= radio_button_tag(:close,1) %>
-                      <%= label_tag(:close, "Less than a mile ",:style =>"display:inline") %>
-                      </div>
-                       <div class="field">
-                        <%= radio_button_tag(:far,1) %>
-                      <%= label_tag(:far, "Less than 5 miles ",:style =>"display:inline") %>
-                      </div> 
-                    </li> </ul>
-    </div>
-</div>    
+  <div id="tog" class="container collapse-group">
+    <div class="row">
+    <p class="text-left"><a class="btn showdetails" data-toggle="collapse" data-target="#hideme">Filters &raquo;</a></p>
+  </div>
+    <div id="hideme" class="collapse">
+            <div class="col-xs-6">
+                       <ul class="list-inline">
+                        <li><h2>Filter By Price</h2></li><br>
+                        <l1> <div class="checkbox-inline"><%= check_box_tag(:cheap) %> <%= label_tag(:cheap, "Low Price (<$5)") %> </div></li>
+                        <li> <div class="checkbox-inline"><%= check_box_tag(:average) %> <%= label_tag(:average, "Average Price ($5-$15)") %></div></li>
+                        <li><div class="checkbox-inline"><%= check_box_tag(:expensive) %> <%= label_tag(:expensive, "High Price (>$15)") %></div> </li>
+                      </ul>  
+            </div>
+             <div class="col-xs-6">
+                       <ul class="list-inline">
+                <li><h2>Filter By Distance</h2></li><br>
+                             <li>
+                                <div class="field">
+                                <%= radio_button_tag(:close,1) %>
+                              <%= label_tag(:close, "Less than a mile ",:style =>"display:inline") %>
+                              </div>
+                               <div class="field">
+                                <%= radio_button_tag(:far,1) %>
+                              <%= label_tag(:far, "Less than 5 miles ",:style =>"display:inline") %>
+                              </div> 
+                            </li> </ul>
+            </div>
+  </div>
+</div>
+   
   <% end %>
 
   <% @listing.each do |f|%>
@@ -70,7 +75,6 @@
   </div>
   <hr>
   <% end %>
-
 
 <script type='text/javascript'>
  var map = L.mapbox.map('map', 'examples.map-9ijuk24y');

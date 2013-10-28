@@ -33,6 +33,7 @@
            <p><%= @moy[date.month]%> <%= date.day%></p> <!-- place  of order date here -->
             <% end %>
           </div>
+
             <div class="col-xs-10 text-center">
               <br>
               <%= link_to f.item, order_path(f)%>
@@ -50,10 +51,10 @@
 <% events.each do |f|%>
 <div class="row">
             <div class="col-xs-2 text-center">
-            <h3><% date=f.event_time %></h3> <!-- place day of week of event date here -->
+            <h3><% date=f.event_time %><%= @dow[date.wday] %></h3> <!-- place day of week of event date here -->
 	    <p><%= @moy[date.month]%> <%= date.day%></p> <!-- place month and date of event date here -->
           </div>
-            <div class="col-xs-10 text-left">
+            <div class="col-xs-10 text-center">
               <br>
               <%= link_to f.title, user_event_path(current_user,f) %>
             </div>

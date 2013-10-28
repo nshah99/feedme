@@ -23,15 +23,14 @@
 </p>
 <% if params[:order_id] %>
   <div class="container">
-  <div class="form-signin">
+  <div class="form-signin pull-left">
 
 
       <%= form_for(@review) do |f| %>
+        <h2 class="form-signin-heading">Add a review</h2>
 
-
-       <%= f.text_field :item ,value:@listing.item %><br>
-        
-        <%= f.text_area :review_text, placeholder: "Review"%>
+       <%= f.text_field :item ,value:@listing.item, class:"form-control" %><br>
+        <%= f.text_area :review_text, placeholder: "Review", class:"form-control"%>
         
         <%= f.hidden_field :user_id, value: @listing.user_id%>
         <%= f.hidden_field :order_id, value: params[:order_id]%>
@@ -44,7 +43,8 @@
 </div>
   <% else %>
  <br><br>
-  There are <%= @listing.reviews.count%> reviews for this listing
+ <h4>Reviews:</h4>
+  Total number of reviews: <%= @listing.reviews.count%> 
 <br><br>
 
    <% if @listing.reviews.count > 0 %>

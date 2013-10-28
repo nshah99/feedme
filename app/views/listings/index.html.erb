@@ -50,7 +50,10 @@
   <hr>
   <div class="row">
   <div class="col-xs-2">  
-      <img src="http://chewoutloud.files.wordpress.com/2013/02/deep-dish-pizza.jpg" alt="Pizza" class="img-thumbnail"> <!-- chef or listing image -->
+      <% pic = f.picture %>
+      <!-- <img src="http://chewoutloud.files.wordpress.com/2013/02/deep-dish-pizza.jpg" alt="Pizza" class="img-thumbnail"> -->
+      <%= image_tag(pic, class:"img-thumbnail",height:"100", width:"100") %>
+
   </div>    
   <div class="col-xs-5 pull-left">  
      <p>Item: <%= link_to f.item, listings_path+"/"+f.id.to_s%></p> <br>

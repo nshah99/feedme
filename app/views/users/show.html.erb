@@ -9,13 +9,19 @@
           <h1 class="text-muted" id="username"><%= @user.name%></h1>
       </div>
 
-      <div class="row text-center userimage">
-      <img src="https://fbcdn-profile-a.akamaihd.net/hprofile-ak-prn1/c170.50.621.621/s160x160/60396_10151623598338579_630528982_n.jpg" alt="User Image" height="100" width="100" class="img-rounded"> 
+              <div class="row text-center userimage">
+<!--         <%= image_tag('chef.jpg', class: "img-rounded", height:"200", width:"200",alt:"Chef")%> -->
+<!--         <%pic = @user.picture%>
+        <%= image_tag(pic) %> -->
 
-      </div>
-       <%= render 'follow_form' if signed_in?%>
+              </div>
+               <div class="row text-center"> 
+
+                    <%= render 'follow_form' if signed_in?%>
+
+               </div>      
       <div class="row text-center">
-          <p id="userdescription" class="userdes">Lorem ipsum dolor sit amet, sea nobis mediocritatem ex, erat propriae ea sit, nec ne dicam causae lobortis. Ius soluta veritus id, lobortis intellegat forensibus id his. Eam ad justo perpetua, ex eos graece appareat, vis idque tantas tritani ne. Nam timeam deseruisse ut, utamur sensibus ea has.</p> <!-- replace with user description value here -->
+          <p id="userdescription" class="userdes"><%= @user.description%></p> <!-- replace with user description value here -->
       </div>
 
       <div class="row">
@@ -32,13 +38,10 @@
             <p>Reviews</p>
             </div>
       </div>
+
       <div class="row">
 
-
-      </div>
-      <div class="row">
-
-          <h4 class="profileentry">Address</h4>
+          <h4 class="profileentry">Address</h4> <%= @user.address_line %>
 	  
       </div>  
       <hr>
@@ -62,7 +65,12 @@
             <h3>FRI</h3> <!-- place day of week of listing date here -->
             <p>Oct 26</p> <!-- place month and date of listing date here -->
           </div>
-            <div class="col-xs-10 text-left">
+            <div class="col-xs-5 text-center">
+              <br>
+                  <% listpic = f.picture %>
+                  <%= image_tag(listpic, class:"img-thumbnail", width:"100", height:"100") %><br>
+            </div>
+            <div class="col-xs-5 text-center">
               <br>
                   <%= link_to f.item, listings_path+"/"+f.id.to_s%><br>
             </div>

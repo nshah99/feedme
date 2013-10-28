@@ -1,6 +1,7 @@
-<h1>Reviews#show</h1>
-<p>Find me in app/views/reviews/show.html.erb</p>
+<h1>Reviews</h1>
 <br>
-<%= @review.item%>
-<%= @review.review_text%>
-<%= @review.order_id%>
+<ul class="inline"><li><strong>Item name:</strong></li><li> <%= @review.item%></li></ul>
+<ul class="inline"><li><strong>Review:</h3></strong><li> <%= @review.review_text%></li></ul>
+<ul class="inline"><li><strong>Posted by:</strong></li><li> <%= link_to @review.user.name, users_path+"/"+@review.user.id.to_s %></li></ul>
+
+

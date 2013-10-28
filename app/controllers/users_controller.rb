@@ -40,13 +40,13 @@ class UsersController < ApplicationController
   def index
     @user = User.all
     dow={}
-    dow[0] = "Sunday"
-    dow[1] = "Monday"
-    dow[2] = "Tuesday"
-    dow[3] = "Wednesday"
-    dow[4] = "Thursday"
-    dow[5] = "Friday"
-    dow[6] = "Saturday"
+    dow[0] = "Sun"
+    dow[1] = "Mon"
+    dow[2] = "Tue"
+    dow[3] = "Wed"
+    dow[4] = "Thur"
+    dow[5] = "Fri"
+    dow[6] = "Sat"
     @dow = dow
     moy = {}
     moy[1]="Jan"
@@ -111,6 +111,6 @@ class UsersController < ApplicationController
   
   private
   def user_params
-      params.require(:user).permit(:ip,:email,:password,:name,:password_confirmation,:picture,:description,:cuisines)
+      params.require(:user).permit(:ip,:email,:password,:name,:password_confirmation,:picture,:description,:cuisines,:address_line)
   end
 end

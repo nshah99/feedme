@@ -1,4 +1,5 @@
 <h1>Events</h1>
+<hr>
  <% @event.each do |f|%>
  <div class="row">
             <div class="col-xs-2 text-center">
@@ -11,7 +12,7 @@
                <%= link_to f.title,user_event_path(current_user,f) %>
             </div>
 </div>
-
+<hr>
  <% end %>
 <div class="row">
   <h2 class="text-center">Share your homemade dishes! To host potlucks, chef challenges and get-togethers, </h2>

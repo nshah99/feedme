@@ -77,7 +77,7 @@
 <hr>
 
 <h4>My Reviews</h4>
-*Replace the Name of user with image of user*<br><br>
+<br>
 <% @review.each do |f|%>
  <% user = f.order.user%>
 <%=link_to user.name, users_path+"/"+user.id.to_s%> says: 

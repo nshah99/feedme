@@ -1,21 +1,28 @@
 
 <div class="container">
-<p>
+<h2>
 Search user
-</p>
+</h2>
  <%= form_tag search_user_user_path, class: "form-group", :method => 'get' do %>
    <div class="row">
-    <div class="col-xs-5">
-    <%= text_field_tag :search, params[:search],placeholder:"Find chinese,dosa",class: "form-control" %> </div>
-    <%= submit_tag "Search", :name => nil , class: "btn btn-small"%></div>
-   
+    <div class="col-xs-10">
+    <%= text_field_tag :search, params[:search],placeholder:"Search for a user",class: "form-control" %> 
+    </div>
+    <div class="col-xs-2">
+    <%= submit_tag "Search", :name => nil , class: "btn btn-small"%>
+	</div>
+   </div>
 <% end %> 
 
+
 <% if !@result.nil?%>
+<h2 class="text-left">Users found:</h2>
   <% @result.each do |f|%>
+  <div class="row">
     <%= link_to f.name, user_path(f)%><br><br>
+   </div> 
   <% end %>
 <% end %>
-</div>
-</div>
-</div>
+
+
+</div> <!--container -->

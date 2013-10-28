@@ -2,7 +2,10 @@ class UsersController < ApplicationController
   def new
     @user = User.new
   end
-
+  
+  def search_user
+    @result = User.search_user(params[:search])
+  end
   def create
     @user = User.new(user_params)
     @user.ip = "98.242.64.230"

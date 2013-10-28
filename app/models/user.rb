@@ -46,6 +46,11 @@ class User < ActiveRecord::Base
   def unfollow!(other_user)
     relationships.find_by(followed_id: other_user.id ).destroy!
   end
+  
+  def self.search_user(search)
+    a = find(:all, :conditions => ['name LIKE ?',search])
+    return a
+  end
 
   private
 

@@ -33,6 +33,9 @@ Feedme::Application.routes.draw do
   #get "users/update"
   #get "users/delete"
   resources :users do
+    member do
+      get 'search_user'
+    end
     resources :events do
             member do
                get 'attend', :only => [:new,:create,:edit,:update]

@@ -1,0 +1,21 @@
+
+<div class="container">
+<p>
+Search user
+</p>
+ <%= form_tag search_user_user_path, class: "form-group", :method => 'get' do %>
+   <div class="row">
+    <div class="col-xs-5">
+    <%= text_field_tag :search, params[:search],placeholder:"Find chinese,dosa",class: "form-control" %> </div>
+    <%= submit_tag "Search", :name => nil , class: "btn btn-small"%></div>
+   
+<% end %> 
+
+<% if !@result.nil?%>
+  <% @result.each do |f|%>
+    <%= link_to f.name, user_path(f)%><br><br>
+  <% end %>
+<% end %>
+</div>
+</div>
+</div>

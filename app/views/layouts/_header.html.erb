@@ -11,7 +11,7 @@
         <ul class="nav pull-right">
           <li><%= link_to "Home", root_path %></li>
           <% if signed_in? %>
-            <li><%= link_to "Users", '#' %></li>
+            <li><%= link_to "Users", search_user_user_path(current_user) %></li>
             <li> <%= link_to "Events", user_events_path(current_user)%></li>
             <li><%= link_to "Add Event", new_user_event_path(user_id:current_user.id) %></li>
             <li id="fat-menu" class="dropdown">

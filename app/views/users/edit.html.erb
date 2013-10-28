@@ -3,7 +3,9 @@
   <h2 class="form-signin-heading">Update your profile</h2>
     <%= form_for(@user) do |f| %>
       <%= render 'shared/error_messages' %>
-
+<br>
+<!--       <% userpic = @user.picture %>
+      <%= image_tag(userpic) %> -->
       <%= f.label :name %>
       <%= f.text_field :name, class: "form-control" %>
 
@@ -15,7 +17,7 @@
       <%= f.text_field :address_line,class: "form-control" %> 
      <%= f.label :cuisines %>
       <%= f.text_field :cuisines,class: "form-control" %>
-
+      <br>Add a  Picture: <%= f.file_field :picture %> <br>
       <%= f.label :password %>
       <%= f.password_field :password ,class: "form-control"%>
 

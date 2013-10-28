@@ -51,7 +51,10 @@ class User < ActiveRecord::Base
     a = find(:all, :conditions => ['name LIKE ?',search])
     return a
   end
-
+ 
+  def self.sort_orders_by_date(user)
+    find(:all )
+  end
   private
 
     def create_remember_token

@@ -5,4 +5,5 @@ class Event < ActiveRecord::Base
   geocoded_by :address
   after_validation :geocode, :if => :address_changed?
   default_scope -> { order('events.created_at DESC') }
+  scope :current_event, where('events.event_date>?',Time.now)
 end

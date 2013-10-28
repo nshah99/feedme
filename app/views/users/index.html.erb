@@ -1,4 +1,26 @@
 
+<<<<<<< HEAD
+=======
+<% if !current_user.nil?%>
+<br><br><br>
+<div class="row">
+  <h2 class="text-left">Top Listings (Based on popularity)</h2>
+  <% @top5.each do |f|%>
+    <%= link_to f.item, listing_path(f)%><br><br>
+  <% end %>
+  <br><br>
+<% if !@reco.nil?%>
+  <h2 class="text-left">Try these (Based on cuisines)</h2>
+  <% @reco.each do |f|%>
+    <%= link_to f.item, listing_path(f)%><br><br>
+  <% end %>
+  <h2 class="text-left"> Your subscription</h2>
+<% current_user.followed_users.each do |f| %>
+  <%= link_to f.name, user_path(f)%><br><br><br>
+<% end %>
+</div>
+<% end %>
+>>>>>>> c6f3bf3c32b2c75947c9d58f5660c3ba16a77781
 <div class="container">
   
 <div class="row">

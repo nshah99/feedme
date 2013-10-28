@@ -29,11 +29,12 @@
            <p><%= @moy[date.month]%> <%= date.day%></p> <!-- place  of order date here -->
             <% end %>
           </div>
-            <div class="col-xs-10 text-left">
+            <div class="col-xs-10 text-center">
               <br>
               <%= link_to f.item, order_path(f)%>
             </div>
 </div>
+<hr>
 <% end %> <br><br> 
 <% end %>
 <h2 class="text-left">Your Events</h2>
@@ -53,6 +54,7 @@
               <%= link_to f.title, user_event_path(current_user,f) %>
             </div>
 </div>
+<hr>
 <% end %> 
 <% end %> 
 <h2 class="text-left">Feed</h2>
@@ -67,9 +69,10 @@
                 <%= f.user.name%> posted <%= f.item%> 
             <% else %>
             <% end %>
-</div>
+            </div>
 <% end %>
 
+</div>
 
 <br><br><br>
   <h2 class="text-left">Top Listings (Based on popularity)</h2>
@@ -137,4 +140,5 @@
       </div><!-- /.row -->
 </div> <!-- /container -->
 <%end%>
+</div>
 

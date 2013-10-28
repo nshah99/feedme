@@ -1,4 +1,5 @@
 
+<!--
 <div class="container signbody">
 <form class="form-signin">
 
@@ -15,5 +16,24 @@
     <p class="text-center">New user? <%= link_to "Sign up now!", signup_path %></p>
 
 </form>
+</div>
+-->
+
+<div class="container signbody">
+  <div class="form-signin">
+  <h2 class="form-signin-heading">Please sign in</h2>
+
+    <%= form_for(:session, url: sessions_path) do |f| %>
+
+      
+      <%= f.text_field :email,placeholder:"Enter email address", class:"form-control" %>
+
+      <%= f.password_field :password,placeholder:"Enter password", class:"form-control" %>
+
+      <%= f.submit "Sign in", class: "btn btn-large btn-primary btn-block" %>
+    <% end %>
+
+    <p>New user? <%= link_to "Sign up now!", signup_path %></p>
+  </div>
 </div>
 

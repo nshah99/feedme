@@ -8,6 +8,7 @@ gem 'bcrypt-ruby', '3.0.1'
 gem 'geocoder'
 gem 'nifty-generators'
 gem 'carrierwave'
+gem 'faker', '1.1.2'
 
 gem 'anjlab-bootstrap-rails', :require => 'bootstrap-rails',
                           :github => 'anjlab/bootstrap-rails',

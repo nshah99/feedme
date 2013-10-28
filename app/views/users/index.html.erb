@@ -68,9 +68,9 @@
 <div>
             <div class="text-left">
             <% if f.is_a? Order%>
-            <%= link_to f.user.name, user_path(f.user)%> ordered <%= link_to f.item, listing_path(f.listing) %> from <%= link_to f.listing.user.name, user_path(f.listing.user) %> <br><br>
+            <%= link_to f.user.name, user_path(f.user)%> ordered <%= link_to f.item, listing_path(f.listing) %> from <%= link_to f.listing.user.name, user_path(f.listing.user) %> <%= time_ago_in_words(f.created_at)%> ago<br><br>
             <% elsif f.is_a? Listing%>
-                <%= link_to f.user.name, user_path(f.user)%> posted <%= link_to f.item,listing_path(f)%><br><br>
+                <%= link_to f.user.name, user_path(f.user)%> posted <%= link_to f.item,listing_path(f)%> <%= time_ago_in_words(f.created_at)%> ago<br><br>
             <% else %>
             <% end %>
             </div>

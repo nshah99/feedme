@@ -1,15 +1,14 @@
 
 
-<br><br><br>
-<%= image_tag(@user.picture_url, :width => 600) if @user.picture.present? %>
 
-<div class="container">
+<div class="container profilecon">
 
       <div class="row text-center">
           <h1 class="text-muted" id="username"><%= @user.name%></h1>
       </div>
 
               <div class="row text-center userimage">
+                <%= image_tag(@user.picture_url, class:"img-rounded", :width => 200) if @user.picture.present? %>
 <!--         <%= image_tag('chef.jpg', class: "img-rounded", height:"200", width:"200",alt:"Chef")%> -->
 <!--         <%pic = @user.picture%>
         <%= image_tag(pic) %> -->
@@ -24,7 +23,7 @@
           <p id="userdescription" class="userdes"><%= @user.description%></p> <!-- replace with user description value here -->
       </div>
 
-      <div class="row">
+      <div class="row profilebar">
             <div class="col-xs-4 text-center profiletab">
             <h3><%= @user.followers.count%></h3>
             <p>Subscribers</p>
@@ -41,22 +40,20 @@
 
       <div class="row">
 
-          <h4 class="profileentry">Address</h4> <%= @user.address_line %>
+          <ul class="inline"><li><h4 class="profileentry">Address</h4> </li><li><%= @user.address_line %></li></ul>
 	  
       </div>  
       <hr>
       <div class="row">
-          <h4 class="profileentry">Cuisines</h4> <%= @user.cuisines %>
+          <ul class="inline"><li><h4 class="profileentry">Cuisines</h4> </li><li><%= @user.cuisines %></li></ul>
           
       </div>
          <!--<% if @user.id!=current_user.id %>
             <p><%= link_to "Subscribe", '#', class: "btn btn-large btn-primary btn-block" %></p>    
           <% end %>-->
-    </div><!-- /.container -->
 
 <hr>
 
-<div class="container">
 <h4>My Listings</h4>
 <br>
 <% @listing.each do |f|%>
@@ -76,11 +73,11 @@
             </div>
 </div>
 <% end %>
-</div>
+
 <hr>
-<div class="container">
+
 <h4>My Reviews</h4>
-*Replace the Name of user with image of user*<br><br>
+<br>
 <% @review.each do |f|%>
  <% user = f.order.user%>
 <%=link_to user.name, users_path+"/"+user.id.to_s%> says: 

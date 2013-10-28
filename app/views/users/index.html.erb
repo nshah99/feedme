@@ -19,6 +19,9 @@
 <% orders =current_user.orders %>
 <% if !orders.any?%>
     <p>You don't have made any orders yet. <%= link_to "Look for listings nearby!", listings_path %> </p>
+
+<p>Want to be surprised ? <%= link_to "Pandora's Box", listings_path %> </p>
+
 <% else %>
 <% orders.each do |f|%>
 <div class="row">
@@ -120,20 +123,23 @@
       <!-- Three columns of text below the carousel -->
       <div class="row">
         <div class="col-xs-4 text-center">
-          <img class="img-circle" src="data:image/png;base64," data-src="holder.js/140x140" alt="Generic placeholder image">
-          <h2 class="text-center">Find home-cooked food</h2>
+         <!-- <img class="img-circle" src="data:image/png;base64," data-src="holder.js/140x140" alt="Generic placeholder image">-->
+          <%= image_tag('landing_food.jpg', class:"img-circle")%>
+          <h2 class="text-center">Find home-cooked food</h2
           <p>Find home-cooked meals by enthusiastic chefs near you at any time.</p>
           <p><a class="btn btn-default" href="#">View details &raquo;</a></p>
         </div><!-- /.col-lg-4 -->
         <div class="col-xs-4 text-center">
-          <img class="img-circle" src="data:image/png;base64," data-src="holder.js/140x140" alt="Generic placeholder image">
-          <h2 class="text-center">Sell home-cooked food</h2>
+         <!-- <img class="img-circle" src="data:image/png;base64," data-src="holder.js/140x140" alt="Generic placeholder image">-->
+        <%= image_tag('landing_chef.jpg', class:"img-circle")%>  
+        <h2 class="text-center">Sell home-cooked food</h2>
           <p>Party of 2 and cooked for twenty? Don't worry! You can now share it with foodies and earn some money while doing it!</p>
           <p><a class="btn btn-default" href="#">View details &raquo;</a></p>
         </div><!-- /.col-lg-4 -->
         <div class="col-xs-4 text-center">
-          <img class="img-circle" src="data:image/png;base64," data-src="holder.js/140x140" alt="Generic placeholder image">
-          <h2 class="text-center">Meet other foodies and chefs</h2>
+          <!--<img class="img-circle" src="data:image/png;base64," data-src="holder.js/140x140" alt="Generic placeholder image">-->
+         <%= image_tag('landing_event.jpg', class:"img-circle")%> 
+         <h2 class="text-center">Meet other foodies and chefs</h2>
           <p> Setup events to introduce your food to the community as well as get to taste food from others in the community.</p>
           <p><a class="btn btn-default" href="#">View details &raquo;</a></p>
         </div><!-- /.col-lg-4 -->

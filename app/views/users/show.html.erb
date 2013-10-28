@@ -3,7 +3,6 @@
 <br><br><br>
 <%= image_tag(@user.picture_url, :width => 600) if @user.picture.present? %>
 
-
 <div class="container">
 
       <div class="row text-center">
@@ -14,7 +13,7 @@
       <img src="https://fbcdn-profile-a.akamaihd.net/hprofile-ak-prn1/c170.50.621.621/s160x160/60396_10151623598338579_630528982_n.jpg" alt="User Image" height="100" width="100" class="img-rounded"> 
 
       </div>
-
+       <%= render 'follow_form' if signed_in?%>
       <div class="row text-center">
           <p id="userdescription" class="userdes">Lorem ipsum dolor sit amet, sea nobis mediocritatem ex, erat propriae ea sit, nec ne dicam causae lobortis. Ius soluta veritus id, lobortis intellegat forensibus id his. Eam ad justo perpetua, ex eos graece appareat, vis idque tantas tritani ne. Nam timeam deseruisse ut, utamur sensibus ea has.</p> <!-- replace with user description value here -->
       </div>

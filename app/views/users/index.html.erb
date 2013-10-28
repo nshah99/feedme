@@ -12,6 +12,10 @@
   <% @reco.each do |f|%>
     <%= link_to f.item, listing_path(f)%><br><br>
   <% end %>
+  <h2 class="text-left"> Your subscription</h2>
+<% current_user.followed_users.each do |f| %>
+  <%= link_to f.name, user_path(f)%><br><br><br>
+<% end %>
 </div>
 <% end %>
 <div class="container">

@@ -82,11 +82,13 @@ class UsersController < ApplicationController
 
   def is_comprende(listings)
     
-    user_cuisines = current_user.cuisines.split(',').collect{|x| x.strip}
-    suggested_listings = []
-    listings.each do |f|
-      if f.cuisine.in?(user_cuisines)
-        suggested_listings.append(f)
+    if !current_user.cuisines.nil?
+      user_cuisines = current_user.cuisines.split(',').collect{|x| x.strip}
+      suggested_listings = []
+      listings.each do |f|
+        if f.cuisine.in?(user_cuisines)
+          suggested_listings.append(f)
+        end
       end
     end
     return suggested_listings

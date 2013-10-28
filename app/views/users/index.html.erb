@@ -7,11 +7,13 @@
     <%= link_to f.item, listing_path(f)%><br><br>
   <% end %>
   <br><br>
+<% if !@reco.nil?%>
   <h2 class="text-left">Try these (Based on cuisines)</h2>
   <% @reco.each do |f|%>
     <%= link_to f.item, listing_path(f)%><br><br>
   <% end %>
 </div>
+<% end %>
 <div class="container">
   
 <div class="row">

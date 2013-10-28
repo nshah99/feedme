@@ -1,19 +1,4 @@
 
-<% if !current_user.nil?%>
-<br><br><br>
-<div class="row">
-  <h2 class="text-left">Top Listings (Based on popularity)</h2>
-  <% @top5.each do |f|%>
-    <%= link_to f.item, listing_path(f)%><br><br>
-  <% end %>
-  <br><br>
-<% if !@reco.nil?%>
-  <h2 class="text-left">Try these (Based on cuisines)</h2>
-  <% @reco.each do |f|%>
-    <%= link_to f.item, listing_path(f)%><br><br>
-  <% end %>
-</div>
-<% end %>
 <div class="container">
   
 <div class="row">
@@ -31,6 +16,9 @@
   <h2 class="text-left">Welcome, <%= current_user.name%>!</h2>
 <h2 class="text-left">Current Orders</h2>
 <% orders =current_user.orders %>
+<% if !orders.any?%>
+    <p>You don't have made any orders yet. <%= link_to "Look for listings nearby!", listings_path %> </p>
+<% else %>
 <% orders.each do |f|%>
 <div class="row">
             <div class="col-xs-2 text-center">
@@ -45,10 +33,14 @@
               <%= link_to f.item, order_path(f)%>
             </div>
 </div>
-<% end %> <br><br>
+<% end %> <br><br> 
+<% end %>
 <h2 class="text-left">Your Events</h2>
 
 <% events = current_user.events %>
+<% if !orders.any?%>
+    <p>You haven't created any events yet. <%= link_to "Create a new event!", new_user_event_path(user_id:current_user.id) %> </p>
+<% else %>
 <% events.each do |f|%>
 <div class="row">
             <div class="col-xs-2 text-center">
@@ -60,20 +52,36 @@
               <%= link_to f.title, user_event_path(current_user,f) %>
             </div>
 </div>
-<% end %>
+<% end %> 
+<% end %> 
 <h2 class="text-left">Feed</h2>
 
 
 <% @feed.each do |f|%>
 <div>
-            <div class="col-xs-2 text-center">
+            <div class="text-left">
             <% if f.is_a? Order%>
             <%= f.user.name%> ordered <%= f.item %> from <%= f.listing.user.name %> <br><br>
             <% elsif f.is_a? Listing%>
-               <%= f.user.name%> posted <%= f.item%>
+                <%= f.user.name%> posted <%= f.item%> 
             <% else %>
             <% end %>
 </div>
+<% end %>
+
+
+<% if !current_user.nil?%>
+<br><br><br>
+  <h2 class="text-left">Top Listings (Based on popularity)</h2>
+  <% @top5.each do |f|%>
+    <%= link_to f.item, listing_path(f)%><br><br>
+  <% end %>
+  <br><br>
+<% if !@reco.nil?%>
+  <h2 class="text-left">Try these (Based on cuisines)</h2>
+  <% @reco.each do |f|%>
+    <%= link_to f.item, listing_path(f)%><br><br>
+  <% end %>
 <% end %>
 
  </div> <!--container end -->

@@ -1,15 +1,21 @@
- <%= @listing.item %><br><br>
-
+ <h1 class="text-muted text-left"><%= @listing.item %></h1><br>
+<!-- <h2 class="text-left"> Map </h2> -->
 <%= image_tag(@listing.picture_url, :width => 200, :height => 200) if @listing.picture.present? %>
 
-<%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@listing.latitude}%2C#{@listing.longitude}" %>
+<%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@listing.latitude}%2C#{@listing.longitude}" , class: "pull-right"%>
+<ul class="inline text-left"><li><h4>Quantity:</h4></li><li><%= @listing.quantity %></li></ul>
+<ul class="inline"><li><h4>Cuisine:</h4></li><li><%= @listing.cuisine %></li></ul>
 
-<p>
-Food score:
+<h4>Pickup Date:</h4><%= date=@listing.expected_date %>
+<h4>Pickup Address:</h4><%= @listing.address %>
+
+
+<br><br>
+<h4>Food score:</h4>
 <%= @listing.reputation_for(:votes).to_i%> people have given it a good rating
-</p>
+<br><br>
 <p>
-Similar listings:
+<h4>Similar listings:</h4>
 <br>
 <% @reco.each do |f|%>
 <%=link_to f.item,listing_path(f)%><br><br>
@@ -23,7 +29,7 @@ Similar listings:
       <%= form_for(@review) do |f| %>
 
 
-        <%= f.text_field :item ,value:@listing.item %><br>
+       <%= f.text_field :item ,value:@listing.item %><br>
         
         <%= f.text_area :review_text, placeholder: "Review"%>
         

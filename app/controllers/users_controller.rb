@@ -8,11 +8,12 @@ class UsersController < ApplicationController
     @user.ip = "98.242.64.230"
       if @user.save
         sign_in @user
-        if @user.ip == "98.242.64.230"
-          flash[:success] = "98.242.64.230"
-        else
-          flash[:failure]=  9999999999999999
-        end
+
+        #if @user.ip == "98.242.64.230"
+        #  flash[:success] = "98.242.64.230"
+        #else
+        #  flash[:failure]=  9999999999999999
+        #end
    
         redirect_to @user
       else

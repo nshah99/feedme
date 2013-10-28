@@ -17,7 +17,6 @@
   <h2 class="text-left">Welcome, <%= current_user.name%>!</h2>
 <h2 class="text-left">Current Orders</h2>
 <% orders =current_user.orders %>
-<%= orders.count%>
 <% if !orders.any?%>
     <p>You don't have made any orders yet. <%= link_to "Look for listings nearby!", listings_path %> </p>
 

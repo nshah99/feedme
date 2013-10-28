@@ -20,11 +20,11 @@
 
       <div class="row">
             <div class="col-xs-4 text-center profiletab">
-            <h3>89</h3>
+            <h3><%= @user.followers.count%></h3>
             <p>Subscribers</p>
             </div>
             <div class="col-xs-4 text-center profiletab">
-            <h3>89</h3>
+            <h3><%= @user.followed_users.count %></h3>
             <p>Subscribing</p>
             </div>
             <div class="col-xs-4 text-center profiletab">

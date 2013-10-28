@@ -4,5 +4,5 @@ class Event < ActiveRecord::Base
   has_many :users, through: :attendees
   geocoded_by :address
   after_validation :geocode, :if => :address_changed?
-  default_scope -> { order('created_at DESC') }
+  default_scope -> { order('events.created_at DESC') }
 end

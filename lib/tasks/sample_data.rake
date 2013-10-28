@@ -13,11 +13,10 @@ def make_users
     name  = Faker::Name.name
     email = "example-#{n+1}@railstutorial.org"
     password  = "password"
-   cuisines=Faker::Lorem.sentence(1)
     User.create!(name:     name,
                  email:    email,
                  password: password,
-                 password_confirmation: password, cuisines: cuisines)
+                 password_confirmation: password)
   end
 end
 

@@ -1,12 +1,14 @@
-<h1>Events#show</h1>
+<h1><%= @event.title%></h1>
 <br><br>
-  There are <%= @event.users.count%> going to this event
-<br><br>
+<ul class="inline"><li><h4 class="lead"> <strong>What:</strong> </h4></li><li><p class="lead"> <%= @event.description%> </p></li></ul>
+<ul class="inline"><li><h4 class="lead"> <strong>Where: </strong></h4></li><li> <p class="lead"><%= @event.address%> </p></li></ul>
+<ul class="inline"><li><h4 class="lead"> <strong>When: </strong></h4></li><li> <p class="lead"><%= @event.event_date%> </p></li></ul>
+<ul class="inline"><li><h4 class="lead"> <strong>Number of attendees:</strong> </h4></li><li> <p class="lead"><%= @event.users.count%> </p></li></ul>
+<br>
    
-      Show information about events here ........
       <br>
       <% if !current_user.in?(@event.users)%>
-      <%= link_to "Join Event",attend_user_event_path(current_user,@event),class:"btn btn-primary" %>
+      <%= link_to "Join Event",attend_user_event_path(current_user,@event),class: "btn btn-primary btn-large" %>
       <% else %>
           Looking forward to seeing you at the event
        <% end%>

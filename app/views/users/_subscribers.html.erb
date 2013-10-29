@@ -6,4 +6,4 @@
 <%=link_to f.name, user_path(f)%> <br><br>
 <% end %>
 
-<%= will_paginate followers%>
+<%= will_paginate followers,renderer: BootstrapPagination::Rails%>

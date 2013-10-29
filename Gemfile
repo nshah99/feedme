@@ -10,6 +10,7 @@ gem 'nifty-generators'
 gem 'carrierwave'
 gem 'faker', '1.1.2'
 gem 'will_paginate', '~> 3.0.5'
+gem 'will_paginate-bootstrap'
 gem 'anjlab-bootstrap-rails', :require => 'bootstrap-rails',
                           :github => 'anjlab/bootstrap-rails',
                            :branch => '3.0.0'

@@ -1,0 +1,9 @@
+<% if !@user_result.nil?%>
+<h2 class="text-left">Users found:</h2>
+  <% @user_result.each do |f|%>
+  <div class="row">
+    <%= link_to f.name, user_path(f)%><br><br>
+   </div> 
+  <% end %>
+<% end %>
+

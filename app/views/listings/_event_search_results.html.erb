@@ -1,0 +1,10 @@
+<% if !@event_result.nil?%>
+Event result
+<h2 class="text-left">Events found:</h2>
+  <% @event_result.each do |f|%>
+  <div class="row">
+    <%= link_to f.title, event_path(f)%><br><br>
+   </div> 
+  <% end %>
+<% end %>
+

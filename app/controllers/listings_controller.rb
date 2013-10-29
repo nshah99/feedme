@@ -1,6 +1,10 @@
 include SessionsHelper
 class ListingsController < ApplicationController
   
+  def search_user(search)
+    @result = User.search_user(search)
+  end
+ 
   def decline
     listing = Listing.find(params[:id])
     order = Order.find(params[:order_id])
@@ -12,9 +16,7 @@ class ListingsController < ApplicationController
       redirect_to listing
     end
   end
-  def search
-    @grants = Grant.search params[:search]
-  end
+  
 
   def new
     @listing = Listing.new
@@ -24,48 +26,57 @@ class ListingsController < ApplicationController
   end
 
   def index
-    
-      if params[:search].nil? && params[:location].nil?
-        @listing = Listing.search("")
-        return @listing
-      end
-      item = Listing.search(params[:search])
+      if params[:search_option]==3.to_s
+            @event_result = Event.search_event(params[:search])   
+        elsif params[:search_option]==2.to_s
+            flash[:success] = "Inside 2"
+            @user_result = search_user(params[:search])
+        else 
+           
+            flash[:success] = "Inside option 1"
 
-      if params[:close]==1.to_s
-        location = Listing.near(params[:location],1)
-      elsif params[:far]==1.to_s
-        location = Listing.near(params[:location],5)
-      else
-         location = Listing.near(params[:location],100)
-      end
-      @listing = item & location
-      #flash[:failure] = @listing.count.to_s+"/"+item.count.to_s+"before i"+location.count.to_s
-      if @listing.count == 0 && params[:location]==""
-       @listing = Listing.search(params[:search])
-         #flash[:success] = @listing.count
-      end
-      #@nearby = Listing.search(params[:search])
-      cheap=average=expensive=[]
-      
-      if params[:cheap]==1.to_s
-       cheap = Listing.find(:all,:conditions=>['price between ? AND ?',0,5])&@listing
-      end
-      if params[:average]==1.to_s
-       average = Listing.find(:all,:conditions=>['price between ? AND ?',5,15])&@listing
-      end
-      if params[:expensive]==1.to_s
-       expensive = Listing.find(:all,:conditions=>['price between ? AND ?',15,50])&@listing
-      end
-      
-      a = cheap+(average)+(expensive)
-      if a.count==0 && params[:cheap]!=1.to_s && params[:average]!=1.to_s && params[:expensive]!=1.to_s
-         
-         #flash[:success] = "a ka count hai zero"+@listing.count.to_s
-      else
+	      if params[:search].nil? && params[:location].nil?
+		@listing = Listing.search("")
+		return @listing
+	      end
+	      item = Listing.search(params[:search])
 
-         @listing = a
-	#flash[:success] = "ddddddd "+average.count.to_s
-      end
+	      if params[:close]==1.to_s
+		location = Listing.near(params[:location],1)
+	      elsif params[:far]==1.to_s
+		location = Listing.near(params[:location],5)
+	      else
+		 location = Listing.near(params[:location],100)
+	      end
+	      @listing = item & location
+	      #flash[:failure] = @listing.count.to_s+"/"+item.count.to_s+"before i"+location.count.to_s
+	      if @listing.count == 0 && params[:location]==""
+	       @listing = Listing.search(params[:search])
+		 #flash[:success] = @listing.count
+	      end
+	      #@nearby = Listing.search(params[:search])
+	      cheap=average=expensive=[]
+	      
+	      if params[:cheap]==1.to_s
+	       cheap = Listing.find(:all,:conditions=>['price between ? AND ?',0,5])&@listing
+	      end
+	      if params[:average]==1.to_s
+	       average = Listing.find(:all,:conditions=>['price between ? AND ?',5,15])&@listing
+	      end
+	      if params[:expensive]==1.to_s
+	       expensive = Listing.find(:all,:conditions=>['price between ? AND ?',15,50])&@listing
+	      end
+	      
+	      a = cheap+(average)+(expensive)
+	      if a.count==0 && params[:cheap]!=1.to_s && params[:average]!=1.to_s && params[:expensive]!=1.to_s
+		 
+		 #flash[:success] = "a ka count hai zero"+@listing.count.to_s
+	      else
+
+		 @listing = a
+		#flash[:success] = "ddddddd "+average.count.to_s
+	      end
+        end
   end
 
   def show
@@ -106,7 +117,7 @@ class ListingsController < ApplicationController
   end
   
   def listing_params
-    params.require(:listing).permit(:tags,:count,:name,:email,:item,:price,:quantity,:address,:is_ordered,:cuisine,:expected_date,:expected_time,:picture)
+    params.require(:listing).permit(:search_option,:tags,:count,:name,:email,:item,:price,:quantity,:address,:is_ordered,:cuisine,:expected_date,:expected_time,:picture)
   end
 
 end

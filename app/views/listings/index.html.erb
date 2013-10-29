@@ -1,11 +1,16 @@
 <h1 class="text-centered text-muted">Listings</h1>
- 
+
  <%= form_tag listings_path, class: "form-group", :method => 'get' do %>
    <div class="row">
+   <div class"col-xs-2">
+   <%= select_tag(:search_option,options_for_select([['all',0],['listing',1],['user',2],['event',3]],1), class:"form-control")%>
+   </div>
     <div class="col-xs-5">
-    <%= text_field_tag :search, params[:search],placeholder:"Find chinese,dosa",class: "form-control" %> </div>
+   
+    
+    <%= text_field_tag :search, params[:search],placeholder:"Enter search term",class: "form-control" %> </div>
     <div class="col-xs-5">
-    <%= text_field_tag :location, params[:location],placeholder:"Near Atlanta/" , class: "form-control" %> </div>
+    <%= text_field_tag :location, params[:location],placeholder:"Near Atlanta/Seattle/New York" , class: "form-control" %> </div>
     <div class="col-xs-2">
     <%= submit_tag "Search", :name => nil , class: "btn btn-small"%></div>
    
@@ -44,40 +49,19 @@
   </div>
 </div>
    
-  <% end %>
+<% end %>
 
-  <% @listing.each do |f|%>
-  <hr>
-  <div class="row">
-  <div class="col-xs-2">  
-      <% pic = f.picture %>
-      <!-- <img src="http://chewoutloud.files.wordpress.com/2013/02/deep-dish-pizza.jpg" alt="Pizza" class="img-thumbnail"> -->
-      <%= image_tag(pic, class:"img-thumbnail",height:"100", width:"100") %>
+<% if params[:search_option]==1.to_s && !@listing.nil? %>
+  <%= render 'listing_search_result'%>
+<% end%>
 
-  </div>    
-  <div class="col-xs-5 pull-left">  
-     <p>Item: <%= link_to f.item, listings_path+"/"+f.id.to_s%></p> <br>
-     <p>Chef: <%= link_to f.name, users_path+"/"+f.user_id.to_s %></p> <br>
-     <p>Location: <%= f.address%></p><br>    
-  </div>  
-  <div class="col-xs-5 pull-right">
-           <p>Expected Time: <%= f.expected_time%></p><br>
-           <p>Price: <%= f.price%></p><br>
-           <p>Quantiy: <%= f.quantity%></p>
-  </div>   
+<% if params[:search_option]==2.to_s %>
+    <%= render 'user_search_results'%>
+<% end %>
 
-
-<!--   Chef: <%= link_to f.name, users_path+"/"+f.user_id.to_s %> <br>
-  Item: <%= link_to f.item, listings_path+"/"+f.id.to_s%><br>
-  Location: <%= f.address%><br>
-  Price: <%= f.price%><br>
-  Quantiy: <%= f.quantity%><br>
-  Expected Time: <%= f.expected_time%><br>
-  Number of reviews for this listing: <%= f.reviews.count%><br>
-  Number of reviews for this chef: <%= f.user.reviews.count%><br><br> -->
-  </div>
-  <hr>
-  <% end %>
+<% if params[:search_option]==3.to_s%>
+  <%= render 'event_search_results'%>
+<% end %>
 
 <script type='text/javascript'>
  var map = L.mapbox.map('map', 'examples.map-9ijuk24y');

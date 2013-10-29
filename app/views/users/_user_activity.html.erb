@@ -1,0 +1,53 @@
+    <div class="row">
+
+          <ul class="inline"><li><h4 class="profileentry">Address</h4> </li><li><%= @user.address_line %></li></ul>
+	  
+      </div>  
+      <hr>
+      <div class="row">
+          <ul class="inline"><li><h4 class="profileentry">Cuisines</h4> </li><li><%= @user.cuisines %></li></ul>
+          
+      </div>
+         <!--<% if @user.id!=current_user.id %>
+            <p><%= link_to "Subscribe", '#', class: "btn btn-large btn-primary btn-block" %></p>    
+          <% end %>-->
+
+<hr>
+
+<h4>My Listings</h4>
+<br>
+<% @listing.each do |f|%>
+<div class="row">
+            <div class="col-xs-2 text-center">
+            <h3>FRI</h3> <!-- place day of week of listing date here -->
+            <p>Oct 26</p> <!-- place month and date of listing date here -->
+          </div>
+            <div class="col-xs-5 text-center">
+              <br>
+                  <% listpic = f.picture %>
+                  <%= image_tag(listpic, class:"img-thumbnail", width:"100", height:"100") %><br>
+            </div>
+            <div class="col-xs-5 text-center">
+              <br>
+                  <%= link_to f.item, listings_path+"/"+f.id.to_s%><br>
+            </div>
+</div>
+<% end %>
+
+<hr>
+
+<h4>My Reviews</h4>
+<br>
+<% @review.each do |f|%>
+ <% user = f.order.user%>
+<%=link_to user.name, users_path+"/"+user.id.to_s%> says: 
+  <%= f.review_text%><br><br>  
+<% end %>
+
+<h4>Recent Events</h4>
+<br>
+<% current_user.events.each do |f|%>
+<%=link_to f.title, user_event_path(current_user,f)%>
+ <% f.event_time %><br><br>
+  <% end %>
+ </div>

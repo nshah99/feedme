@@ -1,0 +1,9 @@
+<h4>Subscribing</h4>
+<br>
+
+<% followed_users = @user.followed_users.paginate(:page=>params[:page],:per_page=>5)%>
+<% followed_users.each do |f|%>
+<%=link_to f.name, user_path(f)%> <br><br>
+<% end %>
+
+<%= will_paginate followed_users%>

@@ -1,6 +1,17 @@
 include SessionsHelper
 class ListingsController < ApplicationController
   
+  def decline
+    listing = Listing.find(params[:id])
+    order = Order.find(params[:order_id])
+    user = order.user
+    order.is_cancelled = 1
+    if order.save
+      params["declined"] = true
+      flash[:success] = params
+      redirect_to listing
+    end
+  end
   def search
     @grants = Grant.search params[:search]
   end

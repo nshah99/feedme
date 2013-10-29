@@ -34,11 +34,18 @@
             <h3><%= @dow[date.wday]%></h3> <!-- place day of week of order date here -->
            <p><%= @moy[date.month]%> <%= date.day%></p> <!-- place  of order date here -->
             <% end %>
-          </div>
-
+            <br>
+                       </div>
+            
             <div class="col-xs-10 text-center">
               <br>
               <%= link_to f.item, order_path(f)%>
+              <% if f.is_cancelled==1%>
+                <br>
+                Sorry but your order has been declined.
+                Add link to similar listings
+             <% end %>
+
             </div>
 </div>
 <hr>

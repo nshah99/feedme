@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131027233402) do
+ActiveRecord::Schema.define(version: 20131029015828) do
 
   create_table "attendees", force: true do |t|
     t.integer  "user_id"
@@ -74,6 +74,7 @@ ActiveRecord::Schema.define(version: 20131027233402) do
     t.integer  "quantity"
     t.string   "special_request"
     t.string   "item"
+    t.integer  "is_cancelled"
   end
 
   create_table "relationships", force: true do |t|

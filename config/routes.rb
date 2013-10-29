@@ -25,6 +25,7 @@ Feedme::Application.routes.draw do
   resources :relationships, only: [:create, :destroy]
   resources :listings do
     member { post :vote}
+    member { post :decline}
   end
   resources :orders
   resources :reviews

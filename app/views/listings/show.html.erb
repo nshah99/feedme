@@ -41,7 +41,7 @@
        <% end %>
 </div>
 </div>
-  <% else %>
+<% else %>
  <br><br>
  <h4>Reviews:</h4>
   Total number of reviews: <%= @listing.reviews.count%> 
@@ -62,6 +62,25 @@
       <%end %>
    <% end %>
       <% if @listing.user.id !=current_user.id %>
-      <%= link_to "Place order", {:controller=>'orders' ,:action => "new",:listing_id => @listing.id}, class:"btn" %>
+        <%= link_to "Place order", {:controller=>'orders' ,:action => "new",:listing_id => @listing.id}, class:"btn" %>
+      <% else %>
+        Orders placed: <%= @listing.orders.count %>
+        <br>
+        <% @listing.orders.each do |f| %>
+           <% if !f.nil?%>
+            <%= link_to f.user.name,user_path(f.user) %> ordered <%= f.quantity %>
+              <% if !f.special_request.empty?%>
+                with <%= f.special_request %>
+              <% end %>
+               <% if f.is_cancelled==1.to_s %>
+                <%= f.is_cancelled%>
+                 <%= button_to "Decline", decline_listing_path(@listing,:order_id => f.id), class:"btn btn-primary" %>
+               <% else %>
+                  Do not press undecline.. 
+                  <%= button_to "Undecline", decline_listing_path(@listing,:order_id => f.id,:undecline => true), class:"btn btn-primary" %>
+               <% end %>
+           <% end %>
+           <br><br>
+         <% end %>
        <% end %>
 <% end %>

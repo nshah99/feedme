@@ -83,4 +83,11 @@
 <%=link_to user.name, users_path+"/"+user.id.to_s%> says: 
   <%= f.review_text%><br><br>  
 <% end %>
+
+<h4>Recent Events</h4>
+<br>
+<% current_user.events.each do |f|%>
+<%=link_to f.title, user_event_path(current_user,f)%>
+  <% f.event_time %><br><br>
+<% end %>
 </div>

@@ -6,27 +6,41 @@ class UsersController < ApplicationController
   def surprise
     @user = User.find(params[:id])
     subscribing = @user.followed_users
+    
     #user_cuisines = @user.cuisines
     all_current_listings = Listing.search("")
+    
     positive_listings = []
     user_rated_positive_listings = []
+
     past_orders = @user.orders
     past_chefs=[]
     past_orders.each {|x| past_chefs.append(x.listing.user)}
+    past_listings = []
+    past_orders.each {|x| past_listings.append(x)}
     freq = past_chefs.inject(Hash.new(0)) { |h,v| h[v] += 1; h }
     frequent_chef = past_chefs.sort_by { |v| freq[v] }.last
     @reco_most_freq_chef_curr_listing
     all_current_listings.each do |x|
-      if x.user.id == frequent_chef.id
+      if !frequent_chef.nil? && x.user.id == frequent_chef.id
         @reco_most_freq_chef_curr_listing = x
       end
     end
     id_top5 = Listing.top5
-    @top5 = Listing.get_objects_by_id(id_top5)
+    @top5 = Listing.get_objects_by_id(id_top5) - past_listings
     #reputation_for(:votes).to_i
     result = []
-    #all_current_listings.each do |f|
-      
+    @anti_reco=[]
+    cuisines=[]
+    @cuisine_based_reco=[]
+    past_orders.each {|x| cuisines.append(x.listing.cuisine)}
+    all_current_listings.each do |x|
+      if x.cuisine.in? cuisines
+        @cuisine_based_reco.append(x)
+      end
+    end
+    @anti_reco = (all_current_listings - @cuisine_based_reco).first
+    @cuisine_based_reco = (@cuisine_based_reco - past_listings).first
   end
   def search_user
     @result = User.search_user(params[:search])

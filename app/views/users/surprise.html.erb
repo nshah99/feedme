@@ -1,16 +1,21 @@
 Surprise under construction.. Come back soon.
 <br><br>
 <div class="container">
+ 
+ <% if !@reco_most_freq_chef_curr_listing.nil?%>
   <div class="col-xs-4">
     <div class="row">
       <%= link_to  image_tag(@reco_most_freq_chef_curr_listing.picture,:title => "Because you like this chef a lot.",:width=>200,:height=>200), listing_path(@reco_most_freq_chef_curr_listing), class:"pull-left img-thumbnail" %>
      </div>
+    
     <div class="row">
       Expected Time:<%= @reco_most_freq_chef_curr_listing.expected_time.to_formatted_s(:short) %><br></div>
     <div class="row">
       Upvotes: <%= @reco_most_freq_chef_curr_listing.reputation_for(:votes).to_i%>
+
     </div>
   </div>
+<% end %>
   <div class="col-xs-4">
     <div class="row">
      <%= link_to image_tag(@top5.first.picture,:title=>"Selling like hot cakes",:width=>200,:height=>200),listing_path(@top5.first), class:"img-thumbnail"%>
@@ -21,4 +26,30 @@ Surprise under construction.. Come back soon.
       Upvotes: <%= @top5.first.reputation_for(:votes).to_i%>
     </div>
   </div>
+<div class="col-xs-4">
+    <div class="row">
+      <%= link_to  image_tag(@anti_reco.picture,:title => "Because you should try something different",:width=>200,:height=>200), listing_path(@anti_reco), class:"pull-left img-thumbnail" %>
+     </div>
+    
+    <div class="row">
+      Expected Time:<%= @anti_reco.expected_time.to_formatted_s(:short) %><br></div>
+    <div class="row">
+      Upvotes: <%= @anti_reco.reputation_for(:votes).to_i%>
+
+    </div>
+  </div>
+<br><br>
+<div class="col-xs-4">
+    <div class="row">
+      <%= link_to  image_tag(@cuisine_based_reco.picture,:title => "Because you can't get enough of "+@cuisine_based_reco.cuisine,:width=>200,:height=>200), listing_path(@cuisine_based_reco), class:"pull-left img-thumbnail" %>
+     </div>
+    
+    <div class="row">
+      Expected Time:<%= @reco_most_freq_chef_curr_listing.expected_time.to_formatted_s(:short) %><br></div>
+    <div class="row">
+      Upvotes: <%= @reco_most_freq_chef_curr_listing.reputation_for(:votes).to_i%>
+
+    </div>
+  </div>
+
 </div>

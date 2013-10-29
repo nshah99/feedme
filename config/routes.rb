@@ -36,6 +36,7 @@ Feedme::Application.routes.draw do
   resources :users do
     member do
       get 'search_user'
+      get 'surprise'
     end
     resources :events do
             member do

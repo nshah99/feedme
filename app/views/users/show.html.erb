@@ -14,6 +14,7 @@
         <%= image_tag(pic) %> -->
 
               </div>
+             <h3> <%= @user.reputation_for(:votes)%> <h3>
                <div class="row text-center"> 
 
                     <%= render 'follow_form' if signed_in?%>

@@ -72,7 +72,8 @@
               <% if !f.special_request.empty?%>
                 with <%= f.special_request %>
               <% end %>
-               <% if f.is_cancelled==1.to_s %>
+              <%= f.is_cancelled%>
+               <% if f.is_cancelled.nil?%>
                 <%= f.is_cancelled%>
                  <%= button_to "Decline", decline_listing_path(@listing,:order_id => f.id), class:"btn btn-primary" %>
                <% else %>

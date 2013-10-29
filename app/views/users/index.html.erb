@@ -23,7 +23,7 @@
 <% if !orders.any?%>
     <p>You don't have made any orders yet. <%= link_to "Look for listings nearby!", listings_path %> </p>
 
-<p>Want to be surprised ? <%= link_to "Pandora's Box", listings_path %> </p>
+<p>Want to be surprised ? <%= link_to "Surprise Me!", surprise_user_path(current_user) %> </p>
 
 <% else %>
 <% orders.each do |f|%>

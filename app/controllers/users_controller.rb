@@ -3,6 +3,31 @@ class UsersController < ApplicationController
     @user = User.new
   end
   
+  def surprise
+    @user = User.find(params[:id])
+    subscribing = @user.followed_users
+    #user_cuisines = @user.cuisines
+    all_current_listings = Listing.search("")
+    positive_listings = []
+    user_rated_positive_listings = []
+    past_orders = @user.orders
+    past_chefs=[]
+    past_orders.each {|x| past_chefs.append(x.listing.user)}
+    freq = past_chefs.inject(Hash.new(0)) { |h,v| h[v] += 1; h }
+    frequent_chef = past_chefs.sort_by { |v| freq[v] }.last
+    @reco_most_freq_chef_curr_listing
+    all_current_listings.each do |x|
+      if x.user.id == frequent_chef.id
+        @reco_most_freq_chef_curr_listing = x
+      end
+    end
+    id_top5 = Listing.top5
+    @top5 = Listing.get_objects_by_id(id_top5)
+    #reputation_for(:votes).to_i
+    result = []
+    #all_current_listings.each do |f|
+      
+  end
   def search_user
     @result = User.search_user(params[:search])
   end

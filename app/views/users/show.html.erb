@@ -1,6 +1,4 @@
 
-
-
 <div class="container profilecon">
 
       <div class="row text-center">
@@ -14,7 +12,9 @@
         <%= image_tag(pic) %> -->
 
               </div>
-             <h3> <%= @user.reputation_for(:votes)%> <h3>
+              <div class="row text-center">
+             <h3> Rating: <%= @user.reputation_for(:votes)%> <h3>
+             </div>
                <div class="row text-center"> 
 
                     <%= render 'follow_form' if signed_in?%>
@@ -24,31 +24,52 @@
           <p id="userdescription" class="userdes"><%= @user.description%></p> <!-- replace with user description value here -->
       </div>
 
-      <div class="row profilebar">
+      <div class="row profilebar tabs">
             <div class="col-xs-3 text-center profiletab">
             <h3><%=@user.name%></h3>
-            <p><%= link_to "User information",user_path(@user,:anchor=>"user_activity")%></p>
+            <p><%= link_to "User info",user_path(@user,:anchor=>"#tab1")%></p> 
             </div>
             <div class="col-xs-3 text-center profiletab">
             <h3><%= @user.followers.count%></h3>
-            <p><%= link_to "Subscribers",user_path(@user,:anchor=>"subscribers")%></p>
+            <p><%= link_to "Subscribers",user_path(@user,:anchor=>"#tab2")%></p> 
             </div>
             <div class="col-xs-3 text-center profiletab">
             <h3><%= @user.followed_users.count %></h3>
-            <p><%= link_to "Subscribing", user_path(@user, :anchor=> "subscribing")%></p>
+            <p><%= link_to "Subscribing", user_path(@user, :anchor=> "#tab3")%></p>
             </div>
             <div class="col-xs-3 text-center profiletab">
             <h3><%= @user.reviews.count %></h3>
-            <p>Reviews</p>
+            <p><%= link_to "Reviews", user_path(@user, :anchor=> "#tab4")%></p>
             </div>
       </div>
 
-<div id='user_activity'>
-<%= render 'user_activity'%>
+<div id="tab1">
+    <%= render 'user_activity'%>
 </div>
-<div id='subscribers'>
-<%= render 'subscribers'%>
+<div id="tab2">
+    <%= render 'subscribers'%>
 </div>
-<div id='subscribing'>
-<%= render 'subscribing' %>
+<div id="tab3">
+    <%= render 'subscribing' %> 
 </div>
+<div id="tab4">
+    <%= render 'reviews' %> 
+</div>
+
+</div> <!-- end of container -->
+
+
+
+<script type="text/javascript">
+//jquery code to show correct tabs and hide the others
+$('div[id^=tab]').hide();
+$('#tab1').show();
+$('.tabs a').click(function () {
+   var tab_id = $(this).attr('href'); 
+   tab_id = "#"+tab_id.slice(12,16); //parsing to get rid of unecessary spaces
+
+   $('div[id^=tab]').hide();
+   $(tab_id).show(); 
+   console.log(tab_id);
+});
+</script>

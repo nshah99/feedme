@@ -1,0 +1,7 @@
+<h4>Reviews</h4>
+<br>
+<% @review.each do |f|%>
+ <% user = f.order.user%>
+<%=link_to user.name, users_path+"/"+user.id.to_s%> says: 
+  <%= f.review_text%><br><br>  
+<% end %>

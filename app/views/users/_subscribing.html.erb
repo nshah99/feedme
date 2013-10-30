@@ -3,7 +3,18 @@
 
 <% followed_users = @user.followed_users.paginate(:page=>params[:page],:per_page=>5)%>
 <% followed_users.each do |f|%>
-<%=link_to f.name, user_path(f)%> <br><br>
+<div class="row">
+	<div class="col-lg-3 text-center">
+		<% pic = f.picture %>
+		<%= image_tag(pic, class:"img-rounded", height:100, width:100) %>
+	</div>
+	<div class="col-lg-7">
+		<p><%=link_to f.name, user_path(f)%> </p>
+		<p><%=f.description %></p>
+
+	</div>
+
+</div><br>
 <% end %>
 
 <%= will_paginate followed_users,renderer: BootstrapPagination::Rails%>

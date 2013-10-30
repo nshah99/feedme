@@ -20,11 +20,15 @@ class UsersController < ApplicationController
     past_orders.each {|x| past_listings.append(x)}
     freq = past_chefs.inject(Hash.new(0)) { |h,v| h[v] += 1; h }
     frequent_chef = past_chefs.sort_by { |v| freq[v] }.last
-    @reco_most_freq_chef_curr_listing
+    reco_most_freq_chef_curr_listing=nil
     all_current_listings.each do |x|
       if !frequent_chef.nil? && x.user.id == frequent_chef.id
-        @reco_most_freq_chef_curr_listing = x
+        reco_most_freq_chef_curr_listing = x
       end
+    end
+    flash[:success] = past_listings.first.item
+    if !reco_most_freq_chef_curr_listing.in? past_listings
+      @reco_most_freq_chef_curr_listing=reco_most_freq_chef_curr_listing
     end
     id_top5 = Listing.top5
     @top5 = Listing.get_objects_by_id(id_top5) - past_listings
@@ -33,12 +37,23 @@ class UsersController < ApplicationController
     @anti_reco=[]
     cuisines=[]
     @cuisine_based_reco=[]
+    @profile_based_reco=[]
     past_orders.each {|x| cuisines.append(x.listing.cuisine)}
-    all_current_listings.each do |x|
-      if x.cuisine.in? cuisines
-        @cuisine_based_reco.append(x)
+    if !cuisines.nil?
+      all_current_listings.each do |x|
+        if x.cuisine.in? cuisines
+          @cuisine_based_reco.append(x)
+        end
       end
     end
+    all_current_listings.each do |x|
+      if x.cuisine.in? @user.cuisines
+        @profile_based_reco.append(x)
+      end
+    end
+flash[:success] = (@profile_based_reco.in? past_listings)
+    @profile_based_reco = (@profile_based_reco-past_listings).first
+    
     @anti_reco = (all_current_listings - @cuisine_based_reco).first
     @cuisine_based_reco = (@cuisine_based_reco - past_listings).first
   end

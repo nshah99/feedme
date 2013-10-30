@@ -13,7 +13,7 @@
           <% if signed_in? %>
             <!-- <li><%= link_to "Users", search_user_user_path(current_user) %></li> -->
             <li> <%= link_to "Events", user_events_path(current_user)%></li>
-            <li><%= link_to "Add Event", new_user_event_path(user_id:current_user.id) %></li>
+            <li><%= link_to "Search", listings_path %></li>
             <li id="fat-menu" class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                 Account <b class="caret"></b>

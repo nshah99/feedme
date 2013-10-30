@@ -1,7 +1,14 @@
 
-<br><br><br>
+<div class="container profilecon">
+  <br>
 <h1 class="text-muted"><%= @order.item %></h1>
-<div class="container">
+<div class="col-xs-3 text-center">
+ <br> 
+<% pic = @order.listing.picture %>
+<%= image_tag(pic, class: "img-rounded", width:175, height:175) %>
+</div>
+<div class="col-xs-5">
+
 <ul class="list-inline">
   <li><h4>Cooked By: </h4></li>
   <li><%= @order.listing.user.name %></li> <!-- place author of listing here -->
@@ -21,9 +28,12 @@
 </ul>
 
 <ul>
-<br><br>
+</ul>
+</div>
+<div class="col-xs-2 pull-right">
 <% f=@order%>
   <%= link_to "Add Review", listings_path+"/"+f.listing_id.to_s+"?order_id="+f.id.to_s , class: "btn btn-primary"%><br><br>
-</ul>
+</div>
+</div>	<!--container -->
+<br><br>
 
-</div>	

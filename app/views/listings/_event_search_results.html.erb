@@ -1,10 +1,22 @@
+<div class="container">
+<div class="row">	
+<h2 class="text-left">Events</h2></div>
 <% if !@event_result.nil?%>
-Event result
-<h2 class="text-left">Events found:</h2>
   <% @event_result.each do |f|%>
   <div class="row">
-    <%= link_to f.title, event_path(f)%><br><br>
-   </div> 
-  <% end %>
-<% end %>
+<!--   	       <div class="col-xs-2 text-center">
 
+          </div>
+    <div class="col-xs-10 left"> -->
+    <%= link_to f.title, event_path(f)%><br><br>
+    <small>When: <%= f.event_time%></small><br>
+    <small>Where: <%= f.address%></small><br>
+  	<!-- </div> -->
+  </div>  <!-- end of row -->
+   <hr>
+  <% end %>
+
+<%else%>
+<p>Tough luck. Couldn't find any events by that name.</p>
+<% end %>
+</div>

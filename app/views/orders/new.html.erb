@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container signbody">
   <div class="form-signin">
 
   		<h2 class="form-signin-heading">Order details</h2>
@@ -7,7 +7,8 @@
 
         
         <%= f.text_field :item, value:@listing.item, class: "form-control" %><br>
-        <%= f.text_field :price, value:@listing.price, class: "form-control" %><br>
+        <% pr =  'Price: $ ' + @listing.price.to_s  %>
+        <fieldset disabled><%= f.text_field :price, value:pr, class: "form-control" %><br></fieldset>
         <%= f.text_field :quantity, placeholder: "Quantity", class: "form-control"%> <br>
         <%= f.text_field :special_request, placeholder: "Special dietary requests", class: "form-control"%><br>
         <%= f.hidden_field :listing_id, value: params[:listing_id]%>

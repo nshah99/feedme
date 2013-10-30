@@ -16,7 +16,7 @@
     </div>
   </div>
 <% end %>
-<% if !@top5.nil?%>
+<% if !@top5.first.nil?%>
   <div class="col-xs-4">
     <div class="row">
      <%= link_to image_tag(@top5.first.picture,:title=>"Selling like hot cakes",:width=>200,:height=>200),listing_path(@top5.first), class:"img-thumbnail"%>

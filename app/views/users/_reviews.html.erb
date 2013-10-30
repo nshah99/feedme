@@ -1,7 +1,19 @@
 <h4>Reviews</h4>
 <br>
 <% @review.each do |f|%>
- <% user = f.order.user%>
-<%=link_to user.name, users_path+"/"+user.id.to_s%> says: 
-  <%= f.review_text%><br><br>  
+<div class="row">
+	<% user = f.order.user%>
+ <div class="col-xs-3 text-center">
+ 	<% pic = user.picture %>
+ 	<%= image_tag(pic, class:"img-rounded", width:60, height:60)%>
+ </div>
+ <div class="col-xs-7">	
+
+  <blockquote>
+  <p><%= f.review_text%></p>
+  <p>-- <%=link_to user.name, users_path+"/"+user.id.to_s%></p>
+</blockquote>
+</div>
+</div>
+<hr>
 <% end %>

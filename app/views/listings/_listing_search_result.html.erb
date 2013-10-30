@@ -5,17 +5,17 @@
       <% pic = f.picture %>
       <!-- <img src="http://chewoutloud.files.wordpress.com/2013/02/deep-dish-pizza.jpg" alt="Pizza" class="img-thumbnail"> -->
       <%= image_tag(pic, class:"img-thumbnail",height:"100", width:"100") %>
-   <p><%= f.reputation_for(:votes).to_i%> positive ratings</p>
+   <p class="text-center"><%= f.reputation_for(:votes).to_i%> positive ratings</p>
   </div>    
   <div class="col-xs-5 pull-left">  
-     <p>Item: <%= link_to f.item, listings_path+"/"+f.id.to_s%></p> <br>
-     <p>Chef: <%= link_to f.name, users_path+"/"+f.user_id.to_s %></p> <br>
-     <p>Location: <%= f.address%></p><br>    
+     <p><strong>Item:</strong>&nbsp;&nbsp;<%= link_to f.item, listings_path+"/"+f.id.to_s%></p> <br>
+     <p><strong>Chef:</strong>&nbsp;&nbsp;<%= link_to f.name, users_path+"/"+f.user_id.to_s %></p> <br>
+     <p><strong>Location:</strong>&nbsp;&nbsp;<%= f.address%></p><br>    
   </div>  
   <div class="col-xs-5 pull-right">
-           <p>Expected Time: <%= f.expected_time%></p><br>
-           <p>Price: <%= f.price%></p><br>
-           <p>Quantiy: <%= f.quantity%></p>
+           <p><strong>Expected Time:</strong>&nbsp;&nbsp;<%= f.expected_time%></p><br>
+           <p><strong>Price:</strong>&nbsp;&nbsp;<%= f.price%></p><br>
+           <p><strong>Quantiy: </strong>&nbsp;&nbsp;<%= f.quantity%></p>
   </div>   
 
 

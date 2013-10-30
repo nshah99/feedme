@@ -4,13 +4,13 @@
   
 <div class="row">
     <div class="col-xs-4 text-center hometab">
-        <%= link_to "Profile", user_path(current_user) , class: "btn btn-large btn-link btn-block"%>
+        <%= link_to "Profile", user_path(current_user) , class: "btn probutton btn-large btn-link btn-block"%>
     </div>  
     <div class="col-xs-4 text-center hometab">
-        <%= link_to "Search", listings_path, class: "btn btn-large btn-link btn-block prtab" %>
+        <%= link_to "Search", listings_path, class: "btn probutton btn-large btn-link btn-block prtab" %>
     </div> 
     <div class="col-xs-4 text-center hometab">
-        <%= link_to "Create Listing", new_listing_path, class: "btn btn-large btn-link btn-block prtab" %>
+        <%= link_to "Create Listing", new_listing_path, class: "btn probutton btn-large btn-link btn-block prtab" %>
     </div>       
 </div> 
 <hr>
@@ -34,9 +34,12 @@
            <p><%= @moy[date.month]%> <%= date.day%></p> <!-- place  of order date here -->
             <% end %>
             <br>
-                       </div>
-            
-            <div class="col-xs-10 text-left">
+            </div>
+            <div class="col-xs-2 text-center">
+              <% pic = f.listing.picture %>
+              <%= image_tag(pic, class:"img-rounded" , height:80, width:80) %>
+            </div>  
+            <div class="col-xs-8 text-left">
               <br>
               <%= link_to f.item, order_path(f)%>
               <% if f.is_cancelled==1%>
@@ -79,24 +82,23 @@
   <div class="container">
 
 <div class="row">
-  <div class="col-xs-6 left">
-  <h4 class="text-left">Popular Listings</h4>
-  <% @top5.each do |f|%>
-    <%= link_to f.item, listing_path(f)%><br><br>
-  <% end %>
-</div>
-<div class="col-xs-6 text-right">
-<% if !@reco.nil?%>
-  <h4 class="text-right">You might like these</h4>
-  <% @reco.each do |f|%>
-    <%= link_to f.item, listing_path(f)%><br><br>
-  <% end %>
-<% end %>
+        <div class="col-xs-6 left">
+              <h4 class="text-left">Popular Listings</h4>
+              <% @top5.each do |f|%>
+                <%= link_to f.item, listing_path(f)%><br><br>
+              <% end %>
+      </div>
+      <div class="col-xs-6 text-right">
+              <% if !@reco.nil?%>
+                <h4 class="text-right">You might like these</h4>
+                <% @reco.each do |f|%>
+                  <%= link_to f.item, listing_path(f)%><br><br>
+                <% end %>
+              <% end %>
 
-  </div><!-- Recommendation container end -->
-
+        </div>
 </div>
-</div>
+</div> <!-- Recommendation container end -->
 
 </div> <!-- main content ends-->
 

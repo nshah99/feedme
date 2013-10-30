@@ -1,9 +1,17 @@
 <% if !@user_result.nil?%>
-<h2 class="text-left">Users found:</h2>
   <% @user_result.each do |f|%>
   <div class="row">
-    <%= link_to f.name, user_path(f)%><br><br>
-   </div> 
+	<div class="col-lg-3 text-center">
+		<% pic = f.picture %>
+		<%= image_tag(pic, class:"img-rounded", height:100, width:100) %>
+	</div>
+	<div class="col-lg-7">
+		<p><%=link_to f.name, user_path(f)%> </p>
+		<p><%=f.description %></p>
+
+	</div>
+
+</div><hr>
   <% end %>
 <% end %>
 

@@ -1,4 +1,9 @@
 <h1>Events</h1>
+<div class="row">
+  <ul class="inline text-center">
+  <li><h2 class="text-center">Host potlucks, challenges and share your food! </h2></li>
+  <li><h2 class=  "text-center"><%= link_to "Create an event", new_user_event_path(user_id:current_user.id), class:"btn btn-success btn-large" %> </h2></li>
+</div>  
 <hr>
  <% @event.each do |f|%>
  <div class="row">
@@ -14,7 +19,3 @@
 </div>
 <hr>
  <% end %>
-<div class="row">
-  <h2 class="text-center">Share your homemade dishes! To host potlucks, chef challenges and get-togethers, </h2>
-  <h2 class=  "text-center"><%= link_to "Create an event!", new_user_event_path(user_id:current_user.id), class:"btn btn-success btn-large" %> </h2>
-</div>	

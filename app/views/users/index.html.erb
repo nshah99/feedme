@@ -23,9 +23,8 @@
 <% if !orders.any?%>
     <p>You don't have made any orders yet. <%= link_to "Look for listings nearby!", listings_path %> </p>
 
-<p>Want to be surprised ? <%= link_to "Surprise Me!", surprise_user_path(current_user) %> </p>
-
 <% else %>
+<div class="container"> <!-- orders container -->
 <% orders.each do |f|%>
 <div class="row">
             <div class="col-xs-2 text-center">
@@ -37,7 +36,7 @@
             <br>
                        </div>
             
-            <div class="col-xs-10 text-center">
+            <div class="col-xs-10 text-left">
               <br>
               <%= link_to f.item, order_path(f)%>
               <% if f.is_cancelled==1%>
@@ -50,29 +49,35 @@
 </div>
 <hr>
 <% end %> <br><br> 
+</div> <!-- orders container end -->
 <% end %>
 <h2 class="text-left">Your Events</h2>
-
 <% events = current_user.events %>
 <% if !events.any?%>
     <p>You haven't created any events yet. <%= link_to "Create a new event!", new_user_event_path(user_id:current_user.id) %> </p>
 <% else %>
+<div class="container">
 <% events.each do |f|%>
 <div class="row">
             <div class="col-xs-2 text-center">
             <h3><% date=f.event_time %><%= @dow[date.wday] %></h3> <!-- place day of week of event date here -->
 	    <p><%= @moy[date.month]%> <%= date.day%></p> <!-- place month and date of event date here -->
           </div>
-            <div class="col-xs-10 text-center">
+            <div class="col-xs-10 text-left">
               <br>
               <%= link_to f.title, user_event_path(current_user,f) %>
             </div>
 </div>
 <hr>
+</div>
 <% end %> 
 <% end %> 
 
+
   <h2 class="text-muted text-left">Recommendations</h2>
+  <p>Want to be surprised ? <%= link_to "Surprise Me!", surprise_user_path(current_user) %> </p>
+  <div class="container">
+
 <div class="row">
   <div class="col-xs-6 left">
   <h4 class="text-left">Popular Listings</h4>
@@ -87,6 +92,9 @@
     <%= link_to f.item, listing_path(f)%><br><br>
   <% end %>
 <% end %>
+
+  </div><!-- Recommendation container end -->
+
 </div>
 </div>
 

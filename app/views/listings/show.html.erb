@@ -4,27 +4,26 @@
 
 <%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@listing.latitude}%2C#{@listing.longitude}" , class: "pull-right"%>
 <ul class="inline text-left"><li><h4>Quantity:</h4></li><li><%= @listing.quantity %></li></ul>
-<ul class="inline"><li><h4>Cuisine:</h4></li><li><%= @listing.cuisine %></li></ul>
+<ul class="inline text-left"><li><h4>Cuisine:</h4></li><li><%= @listing.cuisine %></li></ul>
 
-<h4>Pickup Date:</h4><%= date=@listing.expected_date %>
-<h4>Pickup Address:</h4><%= @listing.address %>
+<h4>Pickup Date</h4><%= date=@listing.expected_date %>
+<h4>Pickup Address</h4><%= @listing.address %>
 
 
 <br><br>
-<h4>Food score:</h4>
+<h4>Food score</h4>
 <%= @listing.reputation_for(:votes).to_i%> people have given it a good rating
 <br><br>
 <p>
-<h4>Similar listings:</h4>
+<h4>Similar listings</h4>
 <br>
 <% @reco.each do |f|%>
-<%=link_to f.item,listing_path(f)%><br><br>
+<%=link_to f.item,listing_path(f)%><br>
 <% end %>
 </p>
 <% if params[:order_id] %>
   <div class="container">
   <div class="form-signin pull-left">
-
 
       <%= form_for(@review) do |f| %>
         <h2 class="form-signin-heading">Add a review</h2>
@@ -51,18 +50,29 @@
      <% @listing.reviews.each do |f| %>
 
              <% order = f.order%>
-	     <% user = order.user %>
-
+	           <% user = order.user %>
              <% user = f.order.user%>
-	     
 
-             <%= link_to "By "+user.name, users_path+"/"+user.id.to_s%><br>
-        Review:  <%= f.review_text %><br><br>
+	     <div class="row">
+        <% user = f.order.user%>
+       <div class="col-xs-3 text-center">
+        <% pic = user.picture %>
+        <%= image_tag(pic, class:"img-rounded", width:60, height:60)%>
+       </div>
+       <div class="col-xs-7"> 
+
+        <blockquote>
+        <p><%= f.review_text%></p>
+        <p>-- <%=link_to user.name, users_path+"/"+user.id.to_s%></p>
+      </blockquote>
+      </div>
+      </div>
+      <hr>
 
       <%end %>
    <% end %>
       <% if @listing.user.id !=current_user.id %>
-        <%= link_to "Place order", {:controller=>'orders' ,:action => "new",:listing_id => @listing.id}, class:"btn" %>
+        <%= link_to "Place order", {:controller=>'orders' ,:action => "new",:listing_id => @listing.id}, class:"btn btn-success btn-large" %>
       <% else %>
         Orders placed: <%= @listing.orders.count %>
         <br>
@@ -75,10 +85,10 @@
               <%= f.is_cancelled%>
                <% if f.is_cancelled.nil?%>
                 <%= f.is_cancelled%>
-                 <%= button_to "Decline", decline_listing_path(@listing,:order_id => f.id), class:"btn btn-primary" %>
+                 <%= button_to "Decline", decline_listing_path(@listing,:order_id => f.id), class:"btn btn-primary btn-large" %>
                <% else %>
                   Do not press undecline.. 
-                  <%= button_to "Undecline", decline_listing_path(@listing,:order_id => f.id,:undecline => true), class:"btn btn-primary" %>
+                  <%= button_to "Undecline", decline_listing_path(@listing,:order_id => f.id,:undecline => true), class:"btn btn-primary btn-large" %>
                <% end %>
            <% end %>
            <br><br>

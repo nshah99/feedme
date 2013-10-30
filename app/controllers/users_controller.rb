@@ -51,7 +51,7 @@ class UsersController < ApplicationController
       end
     end
     s=""
-    flash[:success] = past_listings.count
+    # flash[:success] = past_listings.count
     if !@user.cuisines.nil?
       all_current_listings.each do |x|
         if x.cuisine.in? @user.cuisines

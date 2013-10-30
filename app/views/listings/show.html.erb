@@ -77,20 +77,30 @@
         Orders placed: <%= @listing.orders.count %>
         <br>
         <% @listing.orders.each do |f| %>
+        <br>
            <% if !f.nil?%>
+           <div class="row">
+            <div class="col-xs-3 text-center">
+              <% pic = f.user.picture %>
+              <%= image_tag(pic,class:"img-rounded", height:60, width:60)%>
+            </div>  
+            <div class="col-xs-7 text-left">
             <%= link_to f.user.name,user_path(f.user) %> ordered <%= f.quantity %>
+            </div>
+            <div class="col-xs-2">
               <% if !f.special_request.empty?%>
                 with <%= f.special_request %>
               <% end %>
-              <%= f.is_cancelled%>
                <% if f.is_cancelled.nil?%>
-                <%= f.is_cancelled%>
                  <%= button_to "Decline", decline_listing_path(@listing,:order_id => f.id), class:"btn btn-primary btn-large" %>
                <% else %>
-                  Do not press undecline.. 
                   <%= button_to "Undecline", decline_listing_path(@listing,:order_id => f.id,:undecline => true), class:"btn btn-primary btn-large" %>
                <% end %>
+             </div>
+          
            <% end %>
+
+         </div>
            <br><br>
          <% end %>
        <% end %>

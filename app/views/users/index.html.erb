@@ -82,13 +82,14 @@
   <div class="container">
 
 <div class="row">
-        <div class="col-xs-6 left">
+        <!-- <div class="col-xs-6 left"> -->
+        
               <h4 class="text-left">Popular Listings</h4>
               <% @top5.each do |f|%>
                 <%= link_to f.item, listing_path(f)%><br><br>
               <% end %>
       </div>
-      <div class="col-xs-6 text-right">
+<!--       <div class="col-xs-6 text-right">
               <% if !@reco.nil?%>
                 <h4 class="text-right">You might like these</h4>
                 <% @reco.each do |f|%>
@@ -96,8 +97,8 @@
                 <% end %>
               <% end %>
 
-        </div>
-</div>
+        </div> -->
+<!-- </div> -->
 </div> <!-- Recommendation container end -->
 
 </div> <!-- main content ends-->

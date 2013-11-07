@@ -44,7 +44,6 @@ GEM
     arel (4.0.1)
     atomic (1.1.14)
     bcrypt-ruby (3.0.1)
-    bcrypt-ruby (3.0.1-x86-mingw32)
     builder (3.1.4)
     capybara (2.1.0)
       mime-types (>= 1.16)
@@ -58,9 +57,9 @@ GEM
       json (>= 1.7)
     childprocess (0.3.9)
       ffi (~> 1.0, >= 1.0.11)
-    coffee-rails (4.0.0)
+    coffee-rails (4.0.1)
       coffee-script (>= 2.2.0)
-      railties (>= 4.0.0.beta, < 5.0)
+      railties (>= 4.0.0, < 5.0)
     coffee-script (2.2.0)
       coffee-script-source
       execjs
@@ -71,7 +70,6 @@ GEM
     faker (1.1.2)
       i18n (~> 0.5)
     ffi (1.9.3)
-    ffi (1.9.3-x86-mingw32)
     geocoder (1.1.8)
     hike (1.2.3)
     i18n (0.6.5)
@@ -95,10 +93,7 @@ GEM
     nifty-generators (0.4.6)
     nokogiri (1.6.0)
       mini_portile (~> 0.5.0)
-    nokogiri (1.6.0-x86-mingw32)
-      mini_portile (~> 0.5.0)
     pg (0.17.0)
-    pg (0.17.0-x86-mingw32)
     polyglot (0.3.3)
     rack (1.5.2)
     rack-test (0.6.2)
@@ -132,8 +127,8 @@ GEM
       rspec-mocks (~> 2.13.0)
     rubyzip (0.9.9)
     sass (3.2.12)
-    sass-rails (4.0.0)
-      railties (>= 4.0.0.beta, < 5.0)
+    sass-rails (4.0.1)
+      railties (>= 4.0.0, < 5.0)
       sass (>= 3.1.10)
       sprockets-rails (~> 2.0.0)
     sdoc (0.3.20)
@@ -175,7 +170,6 @@ GEM
 
 PLATFORMS
   ruby
-  x86-mingw32
 
 DEPENDENCIES
   activerecord-reputation-system!
@@ -183,7 +177,7 @@ DEPENDENCIES
   bcrypt-ruby (= 3.0.1)
   capybara (= 2.1.0)
   carrierwave
-  coffee-rails (= 4.0.0)
+  coffee-rails (~> 4.0.1)
   faker (= 1.1.2)
   geocoder
   jbuilder (= 1.0.2)
@@ -194,7 +188,7 @@ DEPENDENCIES
   pg
   rails (= 4.0.0)
   rspec-rails (= 2.13.1)
-  sass-rails (= 4.0.0)
+  sass-rails
   sdoc (= 0.3.20)
   selenium-webdriver (= 2.35.1)
   turbolinks (= 1.1.1)

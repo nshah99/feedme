@@ -55,7 +55,7 @@ ActiveRecord::Schema.define(version: 20131029015828) do
     t.string   "tags"
   end
 
-  add_index "listings", ["user_id", "created_at"], name: "index_listings_on_user_id_and_created_at"
+  add_index "listings", ["user_id", "created_at"], name: "index_listings_on_user_id_and_created_at", using: :btree
 
   create_table "locations", force: true do |t|
     t.string   "address"
@@ -84,9 +84,9 @@ ActiveRecord::Schema.define(version: 20131029015828) do
     t.datetime "updated_at"
   end
 
-  add_index "relationships", ["followed_id"], name: "index_relationships_on_followed_id"
-  add_index "relationships", ["follower_id", "followed_id"], name: "index_relationships_on_follower_id_and_followed_id", unique: true
-  add_index "relationships", ["follower_id"], name: "index_relationships_on_follower_id"
+  add_index "relationships", ["followed_id"], name: "index_relationships_on_followed_id", using: :btree
+  add_index "relationships", ["follower_id", "followed_id"], name: "index_relationships_on_follower_id_and_followed_id", unique: true, using: :btree
+  add_index "relationships", ["follower_id"], name: "index_relationships_on_follower_id", using: :btree
 
   create_table "reviews", force: true do |t|
     t.integer  "order_id"
@@ -109,10 +109,10 @@ ActiveRecord::Schema.define(version: 20131029015828) do
     t.datetime "updated_at"
   end
 
-  add_index "rs_evaluations", ["reputation_name", "source_id", "source_type", "target_id", "target_type"], name: "index_rs_evaluations_on_reputation_name_and_source_and_target", unique: true
-  add_index "rs_evaluations", ["reputation_name"], name: "index_rs_evaluations_on_reputation_name"
-  add_index "rs_evaluations", ["source_id", "source_type"], name: "index_rs_evaluations_on_source_id_and_source_type"
-  add_index "rs_evaluations", ["target_id", "target_type"], name: "index_rs_evaluations_on_target_id_and_target_type"
+  add_index "rs_evaluations", ["reputation_name", "source_id", "source_type", "target_id", "target_type"], name: "index_rs_evaluations_on_reputation_name_and_source_and_target", unique: true, using: :btree
+  add_index "rs_evaluations", ["reputation_name"], name: "index_rs_evaluations_on_reputation_name", using: :btree
+  add_index "rs_evaluations", ["source_id", "source_type"], name: "index_rs_evaluations_on_source_id_and_source_type", using: :btree
+  add_index "rs_evaluations", ["target_id", "target_type"], name: "index_rs_evaluations_on_target_id_and_target_type", using: :btree
 
   create_table "rs_reputation_messages", force: true do |t|
     t.integer  "sender_id"
@@ -123,9 +123,9 @@ ActiveRecord::Schema.define(version: 20131029015828) do
     t.datetime "updated_at"
   end
 
-  add_index "rs_reputation_messages", ["receiver_id", "sender_id", "sender_type"], name: "index_rs_reputation_messages_on_receiver_id_and_sender", unique: true
-  add_index "rs_reputation_messages", ["receiver_id"], name: "index_rs_reputation_messages_on_receiver_id"
-  add_index "rs_reputation_messages", ["sender_id", "sender_type"], name: "index_rs_reputation_messages_on_sender_id_and_sender_type"
+  add_index "rs_reputation_messages", ["receiver_id", "sender_id", "sender_type"], name: "index_rs_reputation_messages_on_receiver_id_and_sender", unique: true, using: :btree
+  add_index "rs_reputation_messages", ["receiver_id"], name: "index_rs_reputation_messages_on_receiver_id", using: :btree
+  add_index "rs_reputation_messages", ["sender_id", "sender_type"], name: "index_rs_reputation_messages_on_sender_id_and_sender_type", using: :btree
 
   create_table "rs_reputations", force: true do |t|
     t.string   "reputation_name"
@@ -138,9 +138,9 @@ ActiveRecord::Schema.define(version: 20131029015828) do
     t.datetime "updated_at"
   end
 
-  add_index "rs_reputations", ["reputation_name", "target_id", "target_type"], name: "index_rs_reputations_on_reputation_name_and_target", unique: true
-  add_index "rs_reputations", ["reputation_name"], name: "index_rs_reputations_on_reputation_name"
-  add_index "rs_reputations", ["target_id", "target_type"], name: "index_rs_reputations_on_target_id_and_target_type"
+  add_index "rs_reputations", ["reputation_name", "target_id", "target_type"], name: "index_rs_reputations_on_reputation_name_and_target", unique: true, using: :btree
+  add_index "rs_reputations", ["reputation_name"], name: "index_rs_reputations_on_reputation_name", using: :btree
+  add_index "rs_reputations", ["target_id", "target_type"], name: "index_rs_reputations_on_target_id_and_target_type", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "user_name"
@@ -163,7 +163,7 @@ ActiveRecord::Schema.define(version: 20131029015828) do
     t.float    "longitude"
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["remember_token"], name: "index_users_on_remember_token"
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["remember_token"], name: "index_users_on_remember_token", using: :btree
 
 end

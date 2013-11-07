@@ -23,6 +23,8 @@ class User < ActiveRecord::Base
   has_reputation :votes, source: {reputation: :votes, of: :listings}, aggregated_by: :sum
   geocoded_by :ip
   after_validation :geocode, :if => :ip_changed?
+  scope :current_orders, 
+
   def voted_for?(listing)
     evaluations.where(target_type: listing.class, target_id: listing.id).present?
   end
@@ -48,6 +50,7 @@ class User < ActiveRecord::Base
   end
   
   def self.search_user(search)
+    search = "%"+search+"%"
     a = find(:all, :conditions => ['name LIKE ?',search])
     return a
   end

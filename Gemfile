@@ -20,9 +20,12 @@ gem 'anjlab-bootstrap-rails', :require => 'bootstrap-rails',
 #gem 'protected_attributes' # added so that we can use repuation system gem
 gem 'activerecord-reputation-system', github: 'NARKOZ/activerecord-reputation-system', branch: 'rails4'
 gem 'mapbox-rails'
+gem 'pg'
+#gem 'sqlite3'
+#gem 'taps'
 
 group :development, :test do
-  gem 'sqlite3', '1.3.8'
+  #gem 'sqlite3', '1.3.8'
   gem 'rspec-rails', '2.13.1'
 end
 

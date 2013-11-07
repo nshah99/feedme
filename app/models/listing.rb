@@ -13,7 +13,7 @@ class Listing < ActiveRecord::Base
     where("listings.expected_time>?",Time.now).
     group("listings.id").
     order("orders_count DESC")
-    #limit(5)
+    limit(5)
   validates :item, presence: true
   validates :user_id, presence:true
   geocoded_by :address
@@ -30,7 +30,7 @@ class Listing < ActiveRecord::Base
     end
     search_condition = "%" + search + "%"
     if !search.empty?
-      find(:all, :conditions => ['item LIKE ? OR address LIKE ? OR tags LIKE ?', search_condition, search_condition,search_condition]) & 
+      find(:all, :conditions => ['item LIKE ? OR address LIKE ?', search_condition, search_condition]) & 
 	find(:all,:conditions => ['quantity >? AND expected_time>?',0,Time.now])
     else
       

@@ -35,7 +35,9 @@ group :test do
   gem 'selenium-webdriver', '2.35.1'
   gem 'capybara', '2.1.0'
 end
-
+group :production, :test do
+  gem 'rails_12factor','0.0.2'
+end
 gem 'uglifier', '2.1.1'
 gem 'jquery-rails', '3.0.4'
 gem 'turbolinks', '1.1.1'

@@ -3,7 +3,7 @@
 <br>
 <ul class="inline"><li><strong>Item name:</strong></li><li> <%= @review.item%></li></ul>
 <ul class="inline"><li><strong>Review:</h3></strong><li> <%= @review.review_text%></li></ul>
-<ul class="inline"><li><strong>Posted by:</strong></li><li> <%= link_to @review.user.name, users_path+"/"+@review.user.id.to_s %></li></ul>
+<ul class="inline"><li><strong>Posted for:</strong></li><li> <%= link_to @review.user.name, users_path+"/"+@review.user.id.to_s %></li></ul>
 <br><br>
 <div class"row text-center"> Thanks for the feedback! You've gained some karma points.</div>
 

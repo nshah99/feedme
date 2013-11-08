@@ -11,7 +11,7 @@ class EventsController < ApplicationController
     @event.event_time = params[:event_time]
     ts = @event.event_time
     ds = @event.event_date
-
+    @event.owner_id = @user.id
     @event.event_time = DateTime.new(ds.year,ds.month,ds.day,ts.hour,ts.min,ts.sec)
     if @event.save
       flash[:success] = "Great Success"
@@ -61,9 +61,18 @@ class EventsController < ApplicationController
   end
 
   def update
+    @event = Event.find(params[:id])
+
+    if @event.update_attributes(event_params)
+      flash[:success] = "Event updated"
+      redirect_to @event
+    else
+      render 'edit'
+    end	    
   end
 
   def edit
+    @event = Event.find(params[:id])
   end
 
   def delete

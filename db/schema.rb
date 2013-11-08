@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131029015828) do
+ActiveRecord::Schema.define(version: 20131108053453) do
 
   create_table "attendees", force: true do |t|
     t.integer  "user_id"
@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(version: 20131029015828) do
     t.datetime "updated_at"
     t.float    "latitude"
     t.float    "longitude"
+    t.integer  "owner_id"
   end
 
   create_table "listings", force: true do |t|

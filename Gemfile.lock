@@ -5,15 +5,6 @@ GIT
   specs:
     activerecord-reputation-system (2.0.2)
 
-GIT
-  remote: git://github.com/anjlab/bootstrap-rails.git
-  revision: addb7143365f97f938e3bdbb2ccfc52591230eda
-  branch: 3.0.0
-  specs:
-    anjlab-bootstrap-rails (3.0.0.rc2)
-      railties (>= 3.0)
-      sass (>= 3.2)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -44,6 +35,8 @@ GEM
     arel (4.0.1)
     atomic (1.1.14)
     bcrypt-ruby (3.0.1)
+    bootstrap-sass (2.3.2.0)
+      sass (~> 3.2)
     builder (3.1.4)
     capybara (2.1.0)
       mime-types (>= 1.16)
@@ -192,8 +185,8 @@ PLATFORMS
 
 DEPENDENCIES
   activerecord-reputation-system!
-  anjlab-bootstrap-rails!
   bcrypt-ruby (= 3.0.1)
+  bootstrap-sass (= 2.3.2.0)
   capybara (= 2.1.0)
   carrierwave
   coffee-rails (~> 4.0.1)

@@ -73,7 +73,7 @@ class UsersController < ApplicationController
     @user.ip = "98.242.64.230"
       if @user.save
         sign_in @user
-
+        UserMailer.welcome_email(@user).deliver
         #if @user.ip == "98.242.64.230"
         #  flash[:success] = "98.242.64.230"
         #else

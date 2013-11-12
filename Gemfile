@@ -5,7 +5,7 @@ gem 'coffee-rails','~> 4.0.1'
 
 gem 'sass-rails'
 gem 'rails', '4.0.0'
-gem 'bootstrap-sass', '2.3.2.0'
+#gem 'bootstrap-sass', '2.3.2.0'
 gem 'bcrypt-ruby', '3.0.1'
 gem 'geocoder'
 gem 'nifty-generators'
@@ -13,9 +13,9 @@ gem 'carrierwave'
 gem 'faker', '1.1.2'
 gem 'will_paginate', '~> 3.0.5'
 gem 'will_paginate-bootstrap'
-#gem 'anjlab-bootstrap-rails', :require => 'bootstrap-rails',
-#                          :github => 'anjlab/bootstrap-rails',
-#                           :branch => '3.0.0'
+gem 'anjlab-bootstrap-rails', :require => 'bootstrap-rails',
+                          :github => 'anjlab/bootstrap-rails',
+                           :branch => '3.0.0'
 #gem 'bootstrap-datetimepicker-rails'
 
 #agem 'activerecord-reputation-system', require: 'reputation_system'

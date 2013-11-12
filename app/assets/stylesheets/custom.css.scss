@@ -213,7 +213,7 @@ padding-right: 30px;
   color:white;
   text-shadow:1px 1px 4px #000000;
   border-bottom: 1px solid #e5e5e5;
-  background: url("back.jpg");
+ background-image: url(image-path('back.jpg'));
   opacity: 0.8;
 }
 .jumbotron .btn {

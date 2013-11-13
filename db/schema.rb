@@ -11,11 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131108053453) do
+ActiveRecord::Schema.define(version: 20131113063520) do
 
   create_table "attendees", force: true do |t|
     t.integer  "user_id"
     t.integer  "event_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "event_histories", force: true do |t|
+    t.integer  "event_id"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -162,6 +169,9 @@ ActiveRecord::Schema.define(version: 20131108053453) do
     t.string   "ip"
     t.float    "latitude"
     t.float    "longitude"
+    t.string   "provider"
+    t.string   "uid"
+    t.boolean  "is_approved"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

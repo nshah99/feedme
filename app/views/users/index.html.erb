@@ -39,7 +39,7 @@
               <% pic = f.listing.picture %>
               <%= image_tag(pic, class:"img-rounded" , height:80, width:80) %>
             </div>  
-            <div class="col-xs-8 text-left">
+            <div class="col-xs-4 text-left">
               <br>
               <%= link_to f.item, order_path(f)%>
               <% if f.is_cancelled==1%>
@@ -51,7 +51,11 @@
             </div>
 </div>
 <hr>
-<% end %> <br><br> 
+<% end %> 
+
+<%= link_to "View all orders",user_orders_path(current_user)%>
+<br><br> 
+
 </div> <!-- orders container end -->
 <% end %>
 <h2 class="text-left">Your Events</h2>
@@ -117,7 +121,10 @@
             <%= link_to f.user.name, user_path(f.user)%> ordered <%= link_to f.item, listing_path(f.listing) %> from <%= link_to f.listing.user.name, user_path(f.listing.user) %> <%= time_ago_in_words(f.created_at)%> ago<br><br>
             <% elsif f.is_a? Listing%>
                 <%= link_to f.user.name, user_path(f.user)%> posted <%= link_to f.item,listing_path(f)%> <%= time_ago_in_words(f.created_at)%> ago<br><br>
+            <% elsif f.is_a? Review%>
+              <%= link_to f.listing.item, listing_path(f.listing) %> was reviewed by <%= link_to f.order.user.name,user_path(f.order.user)%> <br><br>
             <% else %>
+               
             <% end %>
             </div>
 <% end %>

@@ -43,6 +43,7 @@ Feedme::Application.routes.draw do
                get 'attend', :only => [:new,:create,:edit,:update]
             end
     end
+    resources :orders, only: [:index]
   end
   resources :sessions, only: [:new, :create, :destroy]
   match '/signup',  to: 'users#new',  via: 'get'

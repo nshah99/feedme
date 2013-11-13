@@ -2,10 +2,30 @@
 <p>
   Index page
   </p>
- 
-  <% @order.each do |f|%>
-    <% if f.listing_id %>
-      
-      <%= link_to f.listing_id, listings_path+"/"+f.listing_id.to_s+"?order_id="+f.id.to_s%><br><br>
-    <% end%>
+ <% orders = current_user.orders.paginate(:page=>params[:page],:per_page=>5)%>
+
+<div class="container">
+<% orders.each do |f|%>
+  <div class="row">
+            <div class="col-xs-2 text-center">
+            <%= date=f.listing.expected_time%>
+            <br>
+            </div>
+            <div class="col-xs-2 text-center">
+              <% pic = f.listing.picture %>
+              <%= image_tag(pic, class:"img-rounded" , height:80, width:80) %>
+            </div>  
+            <div class="col-xs-4 text-left">
+              <br>
+              <%= link_to f.item, order_path(f)%>
+              <% if f.is_cancelled==1%>
+                <br>
+                Sorry but your order has been declined.
+                Add link to similar listings
+             <% end %>
+
+            </div>
+    </div>
   <% end %>
+ <%= will_paginate orders,renderer: BootstrapPagination::Rails%>
+</div>

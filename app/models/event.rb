@@ -12,4 +12,5 @@ class Event < ActiveRecord::Base
     a = find(:all, :conditions => ['title LIKE ?',search])
     return a
   end
+
 end

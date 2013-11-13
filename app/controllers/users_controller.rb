@@ -133,8 +133,8 @@ class UsersController < ApplicationController
     @listings = @allListing[0..9]
     @events = Event.all.limit(10)
     @orders = Order.all.limit(10)
-    id_top5 = Listing.top5
-    @top5 = Listing.get_objects_by_id(id_top5)
+    @id_top5 = Listing.top5
+    @hotcakes = Listing.get_objects_by_id(@id_top5)
     @feed = (@listings+@events+@orders).sort_by(&:created_at).reverse[0..9]
     if !current_user.nil?
      @reco = is_comprende(@allListing)

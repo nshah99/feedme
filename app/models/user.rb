@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
   has_many :favorites, :through => :favorite_listings, :class_name => "Listing"
   has_many :attendees
   has_many :events, through: :attendees
-  has_many :listings, :through => :favoritelistings
+  has_many :listings, dependent: :destroy
   has_many :orders, dependent: :destroy
   has_many :reviews, dependent: :destroy
   has_many :relationships, foreign_key: "follower_id", dependent: :destroy

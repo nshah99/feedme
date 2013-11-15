@@ -117,7 +117,7 @@ class ListingsController < ApplicationController
   end
   
   def listing_params
-    params.require(:listing).permit(:search_option,:tags,:count,:name,:email,:item,:price,:quantity,:address,:is_ordered,:cuisine,:expected_date,:expected_time,:picture)
+    params.require(:listing).permit(:search_option,:searchable_tags,:count,:name,:email,:item,:price,:quantity,:address,:is_ordered,:cuisine,:expected_date,:expected_time,:picture)
   end
 
 end

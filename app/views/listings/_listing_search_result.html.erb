@@ -6,6 +6,12 @@
       <!-- <img src="http://chewoutloud.files.wordpress.com/2013/02/deep-dish-pizza.jpg" alt="Pizza" class="img-thumbnail"> -->
       <%= image_tag(pic, class:"img-thumbnail",height:"100", width:"100") %>
    <p class="text-center"><%= f.reputation_for(:votes).to_i%> positive ratings</p>
+   <p class="center">
+     <%= link_to image_tag("transparent_heart.png", class:"trans-heart"),'' %>
+  </p>
+   <p class="center">
+     <%= link_to "order",'' , class:"btn btn-primary"%> 
+   </p>
   </div>    
   <div class="col-xs-5 pull-left">  
      <p><strong>Item:</strong>&nbsp;&nbsp;<%= link_to f.item, listings_path+"/"+f.id.to_s%></p> <br>

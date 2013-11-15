@@ -59,9 +59,28 @@ var count=0;
 <% end %>
 <div id="listview">
 <% if params[:search_option]==1.to_s && !@listing.nil? %>
+ 
   <%= render 'listing_search_result'%>
+ <!--
+  <div class="span9">
+    <div class="row-fluid">
+      <ul>
+          <li class="inline">
+            
+            <% @listing.each do |f|%>
+            <div class="spl-thumb">
+            <%= link_to image_tag(f.picture, class:"img-thumbnail", height:"300", width:"250"), listing_path(f) %>
+            <%= link_to image_tag("transparent_heart.png", class:"trans-heart"),'' %>
+            </div> 
+           <% end %>
+          </li>
+       </div><!-- row fluid-->
+     </ul>
+    </div><!--rowfluid -->
+   </div> <!-- span9-->
+	-->
 <% end%>
-
+</div>
 <% if params[:search_option]==2.to_s %>
     <%= render 'user_search_results'%>
 <% end %>
@@ -74,7 +93,19 @@ var count=0;
 <div class="footer">
 </div>  
 
-
+<script>
+$(document).ready( function() {
+  
+  $(".trans-heart").hide();
+  $(".row").hover( function() {
+     $(this).find(".trans-heart").fadeIn();
+     console.log("hover works");
+    }, function() {
+       $(this).find(".trans-heart").fadeOut(); 
+     }
+  )}
+  )
+</script>
 <script type='text/javascript'>
  var map = L.mapbox.map('map', 'examples.map-9ijuk24y');
 

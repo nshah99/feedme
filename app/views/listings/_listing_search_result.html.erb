@@ -7,10 +7,13 @@
       <%= image_tag(pic, class:"img-thumbnail",height:"100", width:"100") %>
    <p class="text-center"><%= f.reputation_for(:votes).to_i%> positive ratings</p>
    <p class="center">
-     <%= link_to image_tag("transparent_heart.png", class:"trans-heart"),'' %>
+     <% x=f.id%>
+     <%= link_to image_tag("transparent_heart.png", class:"trans-heart",id:x),'' %>
   </p>
    <p class="center">
-     <%= link_to "order",'' , class:"btn btn-primary"%> 
+    <% if f.user.id !=current_user.id %>
+      <%= link_to "Place order", new_order_path(:listing_id=>f.id), class:"btn btn-primary btn-xs" %>
+    <% end %>
    </p>
   </div>    
   <div class="col-xs-5 pull-left">  

@@ -2,10 +2,12 @@ class Listing < ActiveRecord::Base
   #validate :email, presence: true, uniqueness: true
   #validate :item, presence: true
   #validate :name, presence: true
+  has_many :favorite_listings
+  has_many :favorited, :through=> :favorite_listings, :class_name => "User"
   belongs_to :user
   has_many :reviews
   has_many :orders
-  #default_scope -> { order('listings.created_at DESC') }
+  default_scope -> { order('listings.created_at DESC') }
   scope :ordered_by_time, :conditions=>['expected_time>?',Time.now],:order=> "expected_time"
   scope :top5,
     select("listings.id, count(orders.id) AS orders_count").

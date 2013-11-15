@@ -1,4 +1,5 @@
 Feedme::Application.routes.draw do
+
   #get "events/new"
   #get "events/create"
   #get "events/index"
@@ -29,6 +30,8 @@ Feedme::Application.routes.draw do
   end
   resources :orders
   resources :reviews
+  #resources :favourites, only: [:create]
+  post "favourites/:post_id" => "favourites#create", :as => :favorite
   #get "users/new"
   #get "users/create"
   #get "users/update"

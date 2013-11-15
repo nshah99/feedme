@@ -69,8 +69,8 @@ var count=0;
             
             <% @listing.each do |f|%>
             <div class="spl-thumb">
-            <%= link_to image_tag(f.picture, class:"img-thumbnail", height:"300", width:"250"), listing_path(f) %>
-            <%= link_to image_tag("transparent_heart.png", class:"trans-heart"),'' %>
+            <% link_to image_tag(f.picture, class:"img-thumbnail", height:"300", width:"250"), listing_path(f) %>
+            <% link_to image_tag("transparent_heart.png", class:"trans-heart"),'' %>
             </div> 
            <% end %>
           </li>
@@ -97,13 +97,37 @@ var count=0;
 $(document).ready( function() {
   
   $(".trans-heart").hide();
+  
   $(".row").hover( function() {
      $(this).find(".trans-heart").fadeIn();
      console.log("hover works");
     }, function() {
        $(this).find(".trans-heart").fadeOut(); 
      }
-  )}
+  )
+  
+  $(".trans-heart").hover(function() {
+    
+   $(this).attr('src','/assets/colored_heart.png');
+  }, function() {
+   $(this).attr('src','/assets/transparent_heart.png');
+  })
+  $(".trans-heart").click(function() {
+    
+      var post_id = $(this).attr('id');
+      var $img = $(this);
+      $.ajax({
+       type: "POST",
+       url: 'favourites/' + post_id,
+       success: function() {
+         console.log("Success")
+         $(this).attr('src','/assets/colored_heart.png');
+    }
+  })
+
+   
+  } )
+  }
   )
 </script>
 <script type='text/javascript'>
